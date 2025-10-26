@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+      "my-component": "/components/my-component/my-component"
+    },
+    "navigationBarTitleText": "齐鸣要述"
+  }

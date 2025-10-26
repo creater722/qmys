@@ -1,0 +1,27 @@
+/**components/my-component/my-component.wxss**/
+.my-component {
+    padding: 30rpx;
+    margin: 20rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-component .title {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    color: #333;
+  }
+  
+  .my-component .content {
+    font-size: 28rpx;
+    color: #666;
+    margin-bottom: 30rpx;
+  }
+  
+  .my-component .btn {
+    background-color: #007AFF;
+    color: white;
+    border-radius: 10rpx;
+  }

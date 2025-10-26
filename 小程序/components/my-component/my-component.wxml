@@ -1,0 +1,8 @@
+<!--components/my-component/my-component.wxml-->
+<view class="my-component">
+  <view class="title">{{title}}</view>
+  <view class="content">
+    <slot></slot>
+  </view>
+  <button class="btn" bindtap="onTap">点击我</button>
+</view>

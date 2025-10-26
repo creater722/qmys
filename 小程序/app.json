@@ -1,0 +1,43 @@
+{
+    "pages": [
+      "pages/index/index",
+      "pages/community/community",
+      "pages/profile/profile",
+      "pages/logs/logs"
+    ],
+    "window": {
+      "navigationBarBackgroundColor": "#ffffff",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "齐鸣要述",
+      "backgroundColor": "#eeeeee",
+      "backgroundTextStyle": "light",
+      "enablePullDownRefresh": false
+    },
+    "tabBar": {
+      "color": "#7A7E83",
+      "selectedColor": "#007AFF",
+      "borderStyle": "black",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/community/community",
+          "text": "社区"
+        },
+        {
+          "pagePath": "pages/profile/profile",
+          "text": "个人"
+        }
+      ]
+    },
+    "networkTimeout": {
+      "request": 10000,
+      "downloadFile": 10000
+    },
+    "debug": true,
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+  }

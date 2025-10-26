@@ -1,0 +1,14 @@
+/**pages/logs/logs.wxss**/
+.log-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40rpx;
+  }
+  
+  .log-item {
+    margin: 10rpx;
+    padding: 20rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+  }
