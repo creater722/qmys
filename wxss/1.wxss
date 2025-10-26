@@ -1,0 +1,8 @@
+/** common.wxss **/
+small-p {
+ padding: 5px;
+}
+/** app.wxss **/
+@import "common.wxss";
+ padding: 15px;
+}
