@@ -1,0 +1,46 @@
+<navigation-bar title="食" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-food">
+  <view class="hero-title">餐饮与食品</view>
+  <view class="hero-subtitle">吃得安心，选得省心</view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="section">
+      <view class="section-title">餐饮与食品说明</view>
+      <view class="section-desc">提供餐厅推荐、外卖订餐、食材采购与食品安全提示。</view>
+    </view>
+    <view class="section">
+      <view class="section-title">常用功能</view>
+      <view class="list">
+        <view class="list-item" bindtap="handleTap" data-key="restaurant">
+          <text class="item-icon">🍽️</text>
+          <view class="item-main">
+            <view class="item-title accent">附近餐厅</view>
+            <view class="item-desc">发现优质餐厅与评分排行</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="delivery">
+          <text class="item-icon">🛵</text>
+          <view class="item-main">
+            <view class="item-title accent">外卖订餐</view>
+            <view class="item-desc">便捷选择品牌外卖与下单</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="grocery">
+          <text class="item-icon">🥦</text>
+          <view class="item-main">
+            <view class="item-title accent">食材采购</view>
+            <view class="item-desc">生鲜果蔬与常备食材采购</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="safety">
+          <text class="item-icon">⚠️</text>
+          <view class="item-main">
+            <view class="item-title accent">食品安全提示</view>
+            <view class="item-desc">权威食品安全与过敏警示</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

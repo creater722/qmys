@@ -1,0 +1,47 @@
+<navigation-bar title="医" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-medical">
+  <view class="hero-title">医疗服务</view>
+  <view class="hero-subtitle">看病就医更便捷</view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="section">
+      <view class="section-title">医疗服务说明</view>
+      <view class="section-desc">提供附近医院、预约挂号、急诊指南、医保信息等。</view>
+    </view>
+    <view class="section">
+      <view class="section-title">常用功能</view>
+      <view class="list">
+        <view class="list-item" bindtap="handleTap" data-key="hospital">
+          <text class="item-icon">🏥</text>
+          <view class="item-main">
+            <view class="item-title accent">附近医院</view>
+            <view class="item-desc">快速查看周边医院与科室信息</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="register">
+          <text class="item-icon">📝</text>
+          <view class="item-main">
+            <view class="item-title accent">预约挂号</view>
+            <view class="item-desc">支持按科室医生预约时段</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="emergency">
+          <text class="item-icon">🚑</text>
+          <view class="item-main">
+            <view class="item-title accent">急诊指南</view>
+            <view class="item-desc">急救电话与最近急诊位置</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="insurance">
+          <text class="item-icon">💳</text>
+          <view class="item-main">
+            <view class="item-title accent">医保查询</view>
+            <view class="item-desc">医保余额与报销进度查询</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</scroll-view>

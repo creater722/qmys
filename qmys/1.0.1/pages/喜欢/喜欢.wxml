@@ -1,0 +1,37 @@
+<view class="page {{theme}}">
+  <!-- 骨架屏 -->
+  <view wx:if="{{loading && likeList.length===0}}" class="skeleton">
+    <block wx:for="{{8}}" wx:key="*this">
+      <view class="sk-card">
+        <view class="sk-cover"/>
+        <view class="sk-line sk-title"/>
+        <view class="sk-line sk-sub"/>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空态 -->
+  <view wx-elif="{{likeList.length===0 && !loading}}" class="empty">
+    <image src="/assets/empty-like.png" mode="aspectFit"/>
+    <text>还没有喜欢的内容</text>
+  </view>
+
+  <!-- 列表 -->
+  <scroll-view wx-else scroll-y refresher-enabled refresher-triggered="{{isRefreshing}}"
+               bindrefresherrefresh="onRefresh" bindscrolltolower="onLoadMore"
+               class="list">
+    <view class="card" wx:for="{{likeList}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+      <image class="cover" src="{{item.cover}}" mode="aspectFill" lazy-load/>
+      <view class="meta">
+        <text class="title">{{item.title}}</text>
+        <text class="sub">{{item.desc}}</text>
+        <view class="bottom">
+          <text class="date">{{item.date}}</text>
+          <text class="iconfont icon-heart-fill liked"/>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="load-more">正在加载…</view>
+    <view wx-elif="{{!hasMore && likeList.length>0}}" class="load-more">已经到底啦</view>
+  </scroll-view>
+</view>
