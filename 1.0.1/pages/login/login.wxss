@@ -1,0 +1,210 @@
+/* pages/login/login.wxss */
+page {
+  background-color: #f5f5f5;
+  height: 100%;
+}
+
+.login-container {
+  padding: 40rpx 30rpx;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部标题区域 */
+.login-header {
+  text-align: center;
+  margin-top: 80rpx;
+  margin-bottom: 60rpx;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 登录方式切换 */
+.login-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 40rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 15rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #07c160; /* 微信绿，贴合小程序风格 */
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #07c160;
+  border-radius: 2rpx;
+}
+
+/* 登录面板通用样式 */
+.login-panel {
+  flex: 1;
+  position: relative; /* 新增：确保面板内按钮层级生效 */
+  z-index: 1; /* 新增：基础层级 */
+}
+
+/* 微信登录按钮 - 核心优化点击交互 */
+.wechat-login-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #07c160;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  /* 新增以下样式：解决电脑端点击失效 */
+  position: relative; /* 层级基准 */
+  z-index: 10; /* 高于其他元素，避免被遮挡 */
+  touch-action: manipulation; /* 禁止浏览器默认触摸行为（电脑端有效） */
+  pointer-events: auto; /* 强制开启点击事件 */
+  cursor: pointer; /* 电脑端鼠标悬浮显示手型，提示可点击 */
+}
+
+.wechat-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx;
+}
+
+.tips {
+  font-size: 22rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+/* 手机号登录表单 */
+.form-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  height: 88rpx;
+  margin-bottom: 20rpx;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  height: 100%;
+}
+
+.code-item {
+  position: relative;
+}
+
+.code-input {
+  padding-right: 180rpx;
+}
+
+.get-code-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 160rpx;
+  height: 88rpx;
+  background-color: transparent;
+  color: #07c160;
+  font-size: 26rpx;
+  border: none;
+  /* 新增：获取验证码按钮也加点击优化 */
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.get-code-btn[disabled] {
+  color: #999;
+  cursor: not-allowed; /* 禁用时显示禁止手型 */
+}
+
+.phone-login-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #07c160;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+  border: none;
+  /* 新增以下样式：解决电脑端点击失效 */
+  position: relative;
+  z-index: 10;
+  touch-action: manipulation;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.phone-login-btn[disabled] {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed; /* 禁用时显示禁止手型 */
+}
+
+/* 加载遮罩 */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.loading-box {
+  background-color: #fff;
+  padding: 40rpx 60rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 20rpx;
+}

@@ -1,0 +1,70 @@
+<view class="page {{theme}}">
+  <view class="section">
+    <view class="section-title">通用</view>
+    <view class="cell" bindtap="changeTheme">
+      <text>主题模式</text>
+      <text class="value">{{themeOptions[themeIndex]}}</text>
+    </view>
+    <view class="cell" bindtap="changeLang">
+      <text>语言</text>
+      <text class="value">{{langOptions[langIndex]}}</text>
+    </view>
+    <view class="cell">
+      <text>缓存大小</text>
+      <text class="value">{{cacheSize}}</text>
+      <button size="mini" type="primary" bindtap="clearCache">清理</button>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">通知</view>
+    <view class="cell switch">
+      <text>订阅天气预警</text>
+      <switch checked="{{alertOn}}" bindchange="toggleAlert"/>
+    </view>
+    <view wx:if="{{alertOn}}" class="cell" bindtap="changeFreq">
+      <text>推送频率</text>
+      <text class="value">{{freqOptions[freqIndex]}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">创作者·计划</view>
+    <view class="creator-card">
+      <view class="top">
+        <text class="label">创作激励</text>
+        <text class="status {{creatorStatus}}">{{creatorStatusTxt}}</text>
+      </view>
+      <view class="stats">
+        <view class="item">
+          <text class="num">{{worksCount}}</text>
+          <text class="txt">作品数</text>
+        </view>
+        <view class="item">
+          <text class="num">{{yesterdayPlay}}</text>
+          <text class="txt">昨日播放</text>
+        </view>
+        <view class="item">
+          <text class="num green">{{income}}元</text>
+          <text class="txt">可提现</text>
+        </view>
+      </view>
+      <button wx:if="{{creatorStatus!=='opened'}}"
+              type="primary" bindtap="openCreator">立即开通</button>
+      <button wx:else type="default" bindtap="goWithdraw">去提现</button>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">关于</view>
+    <view class="cell">
+      <text>当前版本</text>
+      <text class="value">{{version}}</text>
+    </view>
+    <view class="cell" bindtap="viewPrivacy">
+      <text>隐私政策</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+</view>
+
