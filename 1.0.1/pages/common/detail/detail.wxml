@@ -1,0 +1,17 @@
+<navigation-bar title="{{title}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="article">
+      <view class="article-title">{{articleTitle}}</view>
+      <view class="article-meta">
+        <text class="date">{{date}}</text>
+        <text class="author">生活服务助手</text>
+      </view>
+      <view class="article-content">
+        <block wx:for="{{content}}" wx:key="*this">
+          <view class="p">{{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,83 @@
+<navigation-bar title="{{title}}" back="{{true}}" color="black" background="{{navBg}}" opacity="{{navOpacity}}"></navigation-bar>
+<!-- 增加scroll事件监听，用于滚动效果计算 -->
+<scroll-view class="scrollarea" scroll-y type="list" bindscroll="onPageScroll">
+  <view class="container">
+    <!-- 【新增】餐厅分类菜单（仅餐厅板块显示） -->
+    <view class="category-container" wx:if="{{type === 'restaurant'}}">
+      <scroll-view scroll-x class="category-scroll">
+        <view class="category-tag {{activeCategory === item.id ? 'active' : ''}}" 
+              wx:for="{{categories}}" 
+              wx:key="id"
+              data-id="{{item.id}}"
+              bindtap="onCategoryTap">
+          {{item.name}}
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 加载中状态 -->
+    <view class="loading" wx:if="{{isLoading}}">
+      <text class="loading-icon">🔄</text>
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <!-- 列表内容（给每个列表项加动画类，使用filteredList渲染） -->
+    <block wx:elif="{{filteredList.length > 0}}">
+      <view 
+        class="card animate-item" 
+        wx:for="{{filteredList}}" 
+        wx:key="id"
+        bindtap="{{type === 'restaurant' ? 'showRestaurantIntro' : 'onItemTap'}}"
+        data-id="{{item.id}}"
+        data-item="{{item}}"
+        style="animation-delay: {{index * 0.1}}s;"
+      >
+        <image 
+          class="card-img" 
+          src="{{item.image}}" 
+          mode="aspectFill" 
+          wx:if="{{item.image}}"
+          lazy-load="{{true}}"
+        ></image>
+        <view class="card-img" wx:else></view>
+        <view class="card-info">
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-desc">{{item.desc}}</view>
+          <view class="card-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty" wx:else>
+      <text class="empty-icon">📭</text>
+      <text>{{emptyText}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<!-- 餐厅介绍弹框 -->
+<view class="intro-modal" wx:if="{{showIntro && type === 'restaurant'}}" bindtap="closeIntro">
+  <view class="modal-content" catchtap="stopPropagation">
+    <text class="modal-title">{{currentRestaurant.title}}</text>
+    <image class="modal-img" src="{{currentRestaurant.image}}" mode="aspectFill" />
+    <view class="modal-base-tags">
+      <text class="base-tag" wx:for="{{currentRestaurant.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+    </view>
+    <view class="modal-section">
+      <text class="section-title">餐厅介绍</text>
+      <text class="modal-desc">{{currentRestaurant.detailDesc}}</text>
+    </view>
+    <view class="modal-section">
+      <text class="section-title">店铺地址</text>
+      <text class="modal-desc">{{currentRestaurant.address}}</text>
+    </view>
+    <view class="modal-section">
+      <text class="section-title">营业时间</text>
+      <text class="modal-desc">{{currentRestaurant.businessTime}}</text>
+    </view>
+    <button class="close-btn" bindtap="closeIntro">关闭</button>
+  </view>
+</view>

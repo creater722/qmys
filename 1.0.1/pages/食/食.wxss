@@ -1,0 +1,117 @@
+/* 页面基础布局 */
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+.content {
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  box-sizing: border-box;
+}
+
+/* 板块样式 */
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+}
+.section-desc {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 8rpx;
+}
+
+/* 功能列表样式 */
+.list {
+  margin-top: 16rpx;
+}
+.list .list-item {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f5f5f5;
+  box-sizing: border-box;
+}
+.list .list-item:last-child {
+  border-bottom: none;
+}
+.item-icon {
+  width: 48rpx;
+  height: 48rpx;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  text-align: center;
+  margin-right: 16rpx;
+}
+.item-main {
+  flex: 1;
+}
+.item-title {
+  font-size: 30rpx;
+  color: #222;
+  line-height: 1.3;
+}
+.item-desc {
+  margin-top: 6rpx;
+  font-size: 26rpx;
+  color: #888;
+  line-height: 1.3;
+}
+.accent {
+  color: #f6a26d;
+}
+
+/* 加载状态样式 */
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.loading-icon {
+  font-size: 48rpx;
+  animation: rotate 1s linear infinite;
+  margin-bottom: 16rpx;
+}
+.loading-text {
+  font-size: 28rpx;
+  color: #666;
+}
+.loading-more {
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #999;
+}
+.no-more {
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

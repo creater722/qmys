@@ -1,0 +1,28 @@
+.page{ background:#f5f5f5; min-height:100vh; padding-bottom:40rpx; }
+.page.dark{ background:#0d0d0d; color:#e5e5e5; }
+
+.section-title{ font-size:24rpx; color:#888; padding:32rpx 32rpx 12rpx; }
+.cell{ display:flex; align-items:center; justify-content:space-between;
+       background:#fff; margin:0 32rpx 16rpx; padding:0 32rpx; height:112rpx;
+       border-radius:16rpx; box-shadow:0 4rpx 12rpx rgba(0,0,0,.05); }
+.page.dark .cell{ background:#1a1a1a; box-shadow:none; }
+.cell .value{ color:#666; font-size:28rpx; }
+.page.dark .cell .value{ color:#aaa; }
+.cell .arrow{ color:#ccc; }
+
+.creator-card{ background:#fff; margin:0 32rpx; padding:32rpx;
+               border-radius:16rpx; box-shadow:0 4rpx 12rpx rgba(0,0,0,.05); }
+.page.dark .creator-card{ background:#1a1a1a; }
+.creator-card .top{ display:flex; justify-content:space-between; margin-bottom:24rpx; }
+.creator-card .status{ font-size:24rpx; padding:4rpx 12rpx; border-radius:8rpx; }
+.status.unopen{ background:#fff3e0; color:#e65100; }
+.status.opened{ background:#e8f5e9; color:#2e7d32; }
+.page.dark .status.unopen{ background:#4a2a00; color:#ffb74d; }
+.page.dark .status.opened{ background:#1b5e20; color:#81c784; }
+
+.stats{ display:flex; justify-content:space-around; text-align:center; margin-bottom:32rpx; }
+.stats .num{ display:block; font-size:36rpx; font-weight:600; }
+.stats .txt{ font-size:24rpx; color:#666; }
+.green{ color:#07c160; }
+
+button{ width:100%; }

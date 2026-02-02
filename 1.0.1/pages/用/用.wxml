@@ -1,0 +1,46 @@
+<navigation-bar title="用" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-use">
+  <view class="hero-title">生活用品与购物</view>
+  <view class="hero-subtitle">好用好价随手达</view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="section">
+      <view class="section-title">生活用品与购物说明</view>
+      <view class="section-desc">提供超市购物、日用品清单、优惠信息与售后服务。</view>
+    </view>
+    <view class="section">
+      <view class="section-title">常用功能</view>
+      <view class="list">
+        <view class="list-item" bindtap="handleTap" data-key="supermarket">
+          <text class="item-icon">🛒</text>
+          <view class="item-main">
+            <view class="item-title accent">附近超市</view>
+            <view class="item-desc">查看营业时间与距离</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="list">
+          <text class="item-icon">🧾</text>
+          <view class="item-main">
+            <view class="item-title accent">日用品清单</view>
+            <view class="item-desc">智能生成与购物对勾</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="discount">
+          <text class="item-icon">💸</text>
+          <view class="item-main">
+            <view class="item-title accent">优惠活动</view>
+            <view class="item-desc">限时折扣与会员价提醒</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="service">
+          <text class="item-icon">🛎️</text>
+          <view class="item-main">
+            <view class="item-title accent">售后服务</view>
+            <view class="item-desc">退换货进度与客服联络</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

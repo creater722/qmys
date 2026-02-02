@@ -1,0 +1,46 @@
+<navigation-bar title="住" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-live">
+  <view class="hero-title">住宿与住房</view>
+  <view class="hero-subtitle">居住服务一站式</view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="section">
+      <view class="section-title">住宿与住房说明</view>
+      <view class="section-desc">提供酒店预订、租房信息、维修报修与物业服务指引。</view>
+    </view>
+    <view class="section">
+      <view class="section-title">常用功能</view>
+      <view class="list">
+        <view class="list-item" bindtap="handleTap" data-key="hotel">
+          <text class="item-icon">🏨</text>
+          <view class="item-main">
+            <view class="item-title accent">酒店预订</view>
+            <view class="item-desc">快捷比价与一键下单</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="rent">
+          <text class="item-icon">🏠</text>
+          <view class="item-main">
+            <view class="item-title accent">租房信息</view>
+            <view class="item-desc">长期短租与真实房源查询</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="repair">
+          <text class="item-icon">🛠️</text>
+          <view class="item-main">
+            <view class="item-title accent">维修报修</view>
+            <view class="item-desc">水电家电报修与进度查询</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="property">
+          <text class="item-icon">🧾</text>
+          <view class="item-main">
+            <view class="item-title accent">物业服务</view>
+            <view class="item-desc">缴费、投诉与公告通知</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
