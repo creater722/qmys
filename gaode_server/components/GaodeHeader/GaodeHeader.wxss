@@ -1,0 +1,29 @@
+/* components/GaodeHeader/GaodeHeader.wxss */
+.flex-style{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0 60rpx;
+  justify-content: space-between;
+  position: fixed; 
+  top: 180rpx;         
+  left: 0;          
+  right: 0;         
+  z-index: 999;     /* 提高层级，避免被其他元素遮挡 */
+}
+.flex-style.active{
+  background: #ffffff;
+  opacity: 1;
+  pointer-events: initial;
+}
+.flex-item{
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  width: 22%;
+  border-radius: 8rpx;
+}
+.flex-item.active{
+  color: #0091ff;
+  background-color: #f0f8ff;
+}
