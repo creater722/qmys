@@ -1,5 +1,73 @@
-.page{ background:#f5f5f5; min-height:100vh; padding-bottom:40rpx; }
+/* 先重置页面默认边距，保证高度计算准确 */
+page {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background:#f5f5f5; 
+  padding-bottom:40rpx; 
+}
+
 .page.dark{ background:#0d0d0d; color:#e5e5e5; }
+/* 头部样式：适配三个元素（按钮+标题+占位符） */
+.head {
+  width: 100%;
+  height: 100px; 
+  display: flex;
+  /* 关键：让左右元素分散对齐，标题自然居中 */
+  justify-content: space-between;
+  align-items: flex-end;
+  background: rgb(99, 185, 99);
+  color: #ffffff;
+  font-size: 38px;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,.1);
+  /* 左右留边距，避免按钮贴死边缘 */
+  padding: 0 20rpx 10rpx;
+  box-sizing: border-box;
+}
+
+/* 标题文字样式，确保居中美观 */
+.title-text {
+  font-size: 38px;
+  font-weight: 500;
+}
+
+/* 右侧占位：宽度和返回按钮一致，保证标题居中 */
+.placeholder {
+  width: 80rpx; /* 和 .back-btn 宽度一致 */
+}
+
+/* 返回按钮样式 */
+.back-btn {
+  font-size: 38px; /* 和标题字号一致 */
+  width: 80rpx; /* 固定宽度，点击区域更大 */
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.back-img {
+  width: 70rpx; 
+  height: 70rpx; 
+}
+
+/* 滚动容器：扣除头部高度，只占屏幕剩余空间（核心修改） */
+.scroll-container {
+  width: 100%;
+  /* calc 计算高度：屏幕高度 - 头部高度（100px），保证不超出屏幕 */
+  height: calc(100vh - 100px);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; /* 惯性滚动，提升体验 */
+}
+
+/* 兼容隐藏滚动条 */
+.scroll-container ::-webkit-scrollbar {
+  display: none;
+}
+
+
+
 
 .section-title{ font-size:24rpx; color:#888; padding:32rpx 32rpx 12rpx; }
 .cell{ display:flex; align-items:center; justify-content:space-between;
