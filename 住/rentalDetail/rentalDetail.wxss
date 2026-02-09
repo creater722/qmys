@@ -1,0 +1,170 @@
+.page-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.loading, .empty {
+  text-align: center;
+  padding: 40rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 标题栏 */
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.back-btn, .collect-btn {
+  font-size: 28rpx;
+  color: #333;
+  padding: 10rpx 15rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+}
+
+/* 房源标题 */
+.house-title {
+  padding: 20rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+
+/* 价格栏 */
+.price-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+}
+
+.price {
+  font-size: 36rpx;
+  color: #f53f3f;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.status.available {
+  color: #07c160;
+  background: #f0f9ff;
+}
+
+.status.reserved {
+  color: #ff976a;
+  background: #fff7e8;
+}
+
+.status.rented, .status.offline {
+  color: #999;
+  background: #f5f5f5;
+}
+
+/* 核心信息卡片 */
+.info-card {
+  background: #fff;
+  padding: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  color: #999;
+  width: 120rpx;
+}
+
+.value {
+  color: #333;
+  flex: 1;
+}
+
+/* 设施卡片 */
+.facilities-card, .desc-card {
+  background: #fff;
+  padding: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.facilities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.facility-item {
+  font-size: 26rpx;
+  color: #666;
+  background: #f5f5f5;
+  padding: 8rpx 15rpx;
+  border-radius: 8rpx;
+}
+
+/* 描述内容 */
+.desc-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 20rpx;
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  gap: 10rpx;
+}
+
+.call-btn, .book-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.call-btn {
+  background: #07c160;
+  color: #fff;
+  border: none;
+}
+
+.book-btn {
+  background: #1989fa;
+  color: #fff;
+  border: none;
+}

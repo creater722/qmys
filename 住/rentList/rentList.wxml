@@ -1,0 +1,93 @@
+<view class="page-container">
+  <view class="page-title">租房信息</view>
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="back-text">返回</text>
+    </view>
+  <view class="rental-list">
+    <view 
+      class="rental-item" 
+      wx:for="{{rentalList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="cover-wrap">
+        <image 
+          class="cover-img" 
+          src="{{item.cover_image || '/images/default-cover.png'}}" 
+          mode="aspectFill"
+        />
+        <view class="price-tag">{{item.rent_price}}元/{{item.rent_unit}}</view>
+      </view>
+      <view class="info-wrap">
+        <view class="title">{{item.title}}</view>
+        <view class="desc">
+          {{item.room_count}}室{{item.hall_count}}厅{{item.bathroom_count}}卫 | {{item.area}}㎡
+        </view>
+        <view class="address">{{item.address}}</view>
+        <view class="tags">
+          <text class="tag" wx:if="{{item.decoration}}">{{item.decoration}}</text>
+          <text class="tag" wx:if="{{item.rent_type}}">{{item.rent_type}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{rentalList.length === 0 && !isLoading}}">
+    暂无租房信息
+  </view>
+
+  <view class="loading" wx:if="{{isLoading}}">
+    加载中...
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && rentalList.length > 0}}">
+    没有更多房源了
+  </view>
+</view><view class="page-container">
+  <view class="page-title">租房信息</view>
+
+  <view class="rental-list">
+    <view 
+      class="rental-item" 
+      wx:for="{{rentalList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="cover-wrap">
+        <image 
+          class="cover-img" 
+          src="{{item.cover_image || '/images/default-cover.png'}}" 
+          mode="aspectFill"
+        />
+        <view class="price-tag">{{item.rent_price}}元/{{item.rent_unit}}</view>
+      </view>
+      <view class="info-wrap">
+        <view class="title">{{item.title}}</view>
+        <view class="desc">
+          {{item.room_count}}室{{item.hall_count}}厅{{item.bathroom_count}}卫 | {{item.area}}㎡
+        </view>
+        <view class="address">{{item.address}}</view>
+        <view class="tags">
+          <text class="tag" wx:if="{{item.decoration}}">{{item.decoration}}</text>
+          <text class="tag" wx:if="{{item.rent_type}}">{{item.rent_type}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{rentalList.length === 0 && !isLoading}}">
+    暂无租房信息
+  </view>
+
+  <view class="loading" wx:if="{{isLoading}}">
+    加载中...
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && rentalList.length > 0}}">
+    没有更多房源了
+  </view>
+</view>

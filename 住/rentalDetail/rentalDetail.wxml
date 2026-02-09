@@ -1,0 +1,75 @@
+<view class="page-container">
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{isLoading}}">加载房源详情中...</view>
+
+  <!-- 详情内容 -->
+  <scroll-view class="content" scroll-y wx:if="{{!isLoading && detail}}">
+    <!-- 标题栏（返回+收藏） -->
+    <view class="title-bar">
+      <view class="back-btn" bindtap="goBack">← 返回</view>
+      <view class="collect-btn" bindtap="collectHouse">收藏</view>
+    </view>
+
+    <!-- 房源标题 -->
+    <view class="house-title">{{detail.title}}</view>
+
+    <!-- 价格+状态 -->
+    <view class="price-bar">
+      <text class="price">¥{{detail.rentPrice}}/月</text>
+      <text class="status {{detail.status}}">{{statusMap[detail.status]}}</text>
+    </view>
+
+    <!-- 核心信息 -->
+    <view class="info-card">
+      <view class="info-row">
+        <text class="label">租房类型：</text>
+        <text class="value">{{rentTypeMap[detail.rentType]}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">房源类型：</text>
+        <text class="value">{{propertyTypeMap[detail.propertyType]}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">户型：</text>
+        <text class="value">{{detail.roomCount}}室{{detail.hallCount}}厅{{detail.bathroomCount}}卫</text>
+      </view>
+      <view class="info-row">
+        <text class="label">面积：</text>
+        <text class="value">{{detail.area}}㎡</text>
+      </view>
+      <view class="info-row">
+        <text class="label">地址：</text>
+        <text class="value">{{detail.province}}{{detail.city}}{{detail.district}}{{detail.communityName}}{{detail.address}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">距地铁：</text>
+        <text class="value">{{detail.nearSubway}}（{{detail.subwayDistance || 0}}米）</text>
+      </view>
+    </view>
+
+    <!-- 设施配置 -->
+    <view class="facilities-card" wx:if="{{detail.facilities && detail.facilities.length > 0}}">
+      <view class="card-title">房源设施</view>
+      <view class="facilities-list">
+        <text class="facility-item" wx:for="{{detail.facilities}}" wx:key="index">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 详细描述 -->
+    <view class="desc-card" wx:if="{{detail.description}}">
+      <view class="card-title">房源描述</view>
+      <view class="desc-content">{{detail.description}}</view>
+    </view>
+
+    <!-- 底部操作栏 -->
+    <view class="bottom-bar">
+      <button class="call-btn" bindtap="callLandlord" wx:if="{{detail.landlordPhone}}">
+        联系房东：{{detail.landlordPhone}}
+      </button>
+      <button class="book-btn" bindtap="bookViewing">预约看房</button>
+    </view>
+  </scroll-view>
+
+  <!-- 无数据 -->
+  <view class="empty" wx:if="{{!isLoading && !detail}}">暂无房源信息</view>
+</view>

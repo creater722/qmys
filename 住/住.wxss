@@ -1,0 +1,11 @@
+page { height: 100vh; display: flex; flex-direction: column; }
+.scrollarea { flex: 1; overflow-y: hidden; }
+.content { padding: 24rpx; display: flex; flex-direction: column; gap: 24rpx; }
+.section-title { font-size: 32rpx; font-weight: 600; color: #111; }
+.section-desc { font-size: 28rpx; color: #666; line-height: 1.6; }
+.list .list-item { padding: 20rpx 0; display: flex; align-items: center; }
+.item-icon { width: 48rpx; height: 48rpx; font-size: 36rpx; line-height: 48rpx; text-align: center; margin-right: 16rpx; }
+.item-main { flex: 1; }
+.item-title { font-size: 30rpx; color: #222; }
+.item-desc { margin-top: 6rpx; font-size: 26rpx; color: #888; }
+.accent { color: #7aa7f5; }

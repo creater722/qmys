@@ -1,0 +1,47 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.page-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.notice-item {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.notice-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.notice-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.notice-time {
+  font-size: 22rpx;
+  color: #999;
+  text-align: right;
+}
+
+.empty, .no-more, .loading {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 40rpx 0;
+}

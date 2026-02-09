@@ -1,0 +1,67 @@
+<view class="page-container">
+  <!-- 酒店封面图 -->
+  <image class="cover-img" src="{{hotel.coverImage || '/images/default-hotel.png'}}" mode="widthFix" />
+
+  <!-- 酒店基础信息 -->
+  <view class="base-info">
+    <view class="name">{{hotel.name}}</view>
+    <view class="tag-wrap">
+      <text class="tag">{{hotel.type || '经济型酒店'}}</text>
+      <text class="tag star-tag">{{hotel.starRating}}星级</text>
+      <text class="tag score-tag">{{hotel.rating || 4.5}}分</text>
+    </view>
+    <view class="address">
+      <icon type="location" size="14" color="#999" />
+      {{hotel.province}}{{hotel.city}}{{hotel.district}}{{hotel.address}}
+    </view>
+    <view class="phone" bindtap="callHotel">
+      <icon type="phone" size="14" color="#007aff" />
+      {{hotel.phone || '暂无'}}
+    </view>
+  </view>
+
+  <!-- 设施服务 -->
+  <view class="facility-wrap">
+    <view class="title">酒店设施</view>
+    <view class="tag-list">
+      <text class="tag" wx:for="{{hotel.facilities}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="service-wrap">
+    <view class="title">酒店服务</view>
+    <view class="tag-list">
+      <text class="tag" wx:for="{{hotel.services}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 房型列表 -->
+  <view class="room-list">
+    <view class="title">可用房型</view>
+    <view class="room-item" wx:for="{{hotel.rooms}}" wx:key="id">
+      <view class="room-info">
+        <view class="room-type">{{item.roomType}}</view>
+        <view class="desc">
+          {{item.bedCount}}张床 | {{item.area}}㎡ | 
+          <text wx:for="{{item.facilities.slice(0,2)}}" wx:key="index">{{item}}{{index < 1 ? ' | ' : ''}}</text>
+        </view>
+      </view>
+      <view class="room-actions">
+        <view class="price">¥{{item.price}}/晚</view>
+        <button class="book-btn" bindtap="bookRoom" data-roomId="{{item.id}}" data-hotelId="{{hotel.id}}">
+          立即预订
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button class="collect-btn" bindtap="collectHotel" data-id="{{hotel.id}}">
+      {{isCollected ? '已收藏' : '收藏酒店'}}
+    </button>
+    <button class="book-all-btn" bindtap="showRoomList">
+      预订房间
+    </button>
+  </view>
+</view>

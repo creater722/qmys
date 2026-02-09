@@ -1,0 +1,114 @@
+<!-- pages/住/repairOrder/repairOrder.wxml -->
+<view class="page-container">
+  <!-- 标题栏（包含返回按钮） -->
+  <view class="title-bar">
+    <!-- 返回按钮 -->
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="back-text">返回</text>
+    </view>
+    <!-- 表单主标题 -->
+    <view class="form-title">维修报修工单</view>
+  </view>
+
+  <!-- 表单内容 -->
+  <view class="form-content">
+    <!-- 故障类型选择 -->
+    <view class="form-item">
+      <label class="form-label">故障类型 <text class="required">*</text></label>
+      <picker 
+        mode="selector" 
+        range="{{repairTypeList}}" 
+        bindchange="onInputChange" 
+        data-key="repairType"
+      >
+        <view class="picker-wrap">
+          {{repairForm.repairType || '请选择故障类型'}}
+          <icon type="arrowright" size="16" color="#999" />
+        </view>
+      </picker>
+    </view>
+
+    <!-- 故障描述 -->
+    <view class="form-item">
+      <label class="form-label">故障描述 <text class="required">*</text></label>
+      <textarea 
+        class="textarea-input"
+        placeholder="请详细描述故障情况（如：厨房水龙头漏水、客厅电灯不亮）" 
+        value="{{repairForm.description}}"
+        bindinput="onInputChange"
+        data-key="description"
+        maxlength="500"
+      ></textarea>
+    </view>
+
+    <!-- 维修地址 -->
+    <view class="form-item">
+      <label class="form-label">维修地址 <text class="required">*</text></label>
+      <input 
+        class="text-input"
+        placeholder="请填写详细维修地址（如：XX小区1栋2单元301）" 
+        value="{{repairForm.address}}"
+        bindinput="onInputChange"
+        data-key="address"
+      />
+    </view>
+
+    <!-- 联系电话 -->
+    <view class="form-item">
+      <label class="form-label">联系电话</label>
+      <input 
+        class="text-input"
+        placeholder="请填写联系电话（选填）" 
+        value="{{repairForm.contactPhone}}"
+        bindinput="onInputChange"
+        data-key="contactPhone"
+        type="number"
+        maxlength="11"
+      />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-btn-wrap">
+    <button 
+      class="submit-btn"
+      bindtap="onSubmit"
+      disabled="{{isSubmitting}}"
+      loading="{{isSubmitting}}"
+    >
+      {{isSubmitting ? '提交中...' : '提交工单'}}
+    </button>
+  </view>
+
+  <!-- 我的工单列表（展示数据库同步的已提交工单） -->
+  <view class="my-orders-section" wx:if="{{myOrders.length > 0}}">
+    <view class="section-title">
+      已提交的工单
+      <button class="refresh-btn" bindtap="getMyOrders" size="mini">
+        {{isLoadingOrders ? '刷新中' : '刷新'}}
+      </button>
+    </view>
+    <view class="order-item" wx:for="{{myOrders}}" wx:key="orderId">
+      <view class="order-header">
+        <text class="order-no">工单号：{{item.orderNo}}</text>
+        <text class="order-status">待处理</text>
+      </view>
+      <view class="order-body">
+        <text class="order-type">故障类型：{{item.repairType}}</text>
+        <text class="order-address">维修地址：{{item.address}}</text>
+        <text class="order-time">提交时间：{{item.createTime ? item.createTime.split('T')[0] : '未知'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工单加载中提示 -->
+  <view class="loading-tip" wx:if="{{isLoadingOrders && myOrders.length === 0}}">
+    加载已提交工单中...
+  </view>
+
+  <!-- 无工单提示 -->
+  <view class="empty-tip" wx:if="{{!isLoadingOrders && myOrders.length === 0 && repairForm.repairType === ''}}">
+    暂无已提交的维修工单
+  </view>
+</view>

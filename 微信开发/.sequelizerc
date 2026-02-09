@@ -1,0 +1,14 @@
+// D:\微信开发\.sequelizerc
+const path = require('path');
+
+// 配置各目录的绝对路径（永久生效）
+module.exports = {
+  // 数据库配置文件路径
+  config: path.resolve(__dirname, 'config', 'config.json'),
+  // 模型文件目录
+  modelsPath: path.resolve(__dirname, 'models'),
+  // 数据库迁移文件目录
+  migrationsPath: path.resolve(__dirname, 'migrations'),
+  // 测试数据种子文件目录
+  seedersPath: path.resolve(__dirname, 'seeders')
+};

@@ -1,0 +1,96 @@
+<view class="page-container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <icon type="search" size="16" color="#999" />
+      <input 
+        placeholder="搜索酒店名称/地址" 
+        value="{{searchKey}}"
+        bindinput="onSearchInput"
+        confirm-type="search"
+        bindconfirm="onSearch"
+      />
+    </view>
+    <button class="search-btn" bindtap="onSearch">搜索</button>
+  </view>
+
+  <!-- 筛选栏 -->
+  <scroll-view class="filter-scroll" scroll-x>
+    <view class="filter-bar">
+      <!-- 城市筛选 -->
+      <picker mode="selector" range="{{cityList}}" bindchange="onCityChange">
+        <view class="filter-item {{currentCity ? 'active' : ''}}">
+          {{currentCity || '全部城市'}}
+        </view>
+      </picker>
+
+      <!-- 星级筛选 -->
+      <picker mode="selector" range="{{starList}}" bindchange="onStarChange">
+        <view class="filter-item {{currentStar ? 'active' : ''}}">
+          {{currentStar || '全部星级'}}
+        </view>
+      </picker>
+
+      <!-- 价格筛选 -->
+      <picker mode="selector" range="{{priceRangeList}}" bindchange="onPriceChange">
+        <view class="filter-item {{currentPrice ? 'active' : ''}}">
+          {{currentPrice || '价格不限'}}
+        </view>
+      </picker>
+
+      <!-- 排序筛选 -->
+      <picker mode="selector" range="{{sortList}}" bindchange="onSortChange">
+        <view class="filter-item {{currentSort ? 'active' : ''}}">
+          {{currentSort || '默认排序'}}
+        </view>
+      </picker>
+    </view>
+  </scroll-view>
+
+  <!-- 酒店列表 -->
+  <view class="hotel-list">
+    <view 
+      class="hotel-item" 
+      wx:for="{{hotelList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <!-- 封面图 -->
+      <view class="cover-wrap">
+        <image 
+          class="cover-img" 
+          src="{{item.coverImage || '/images/default-hotel.png'}}" 
+          mode="aspectFill"
+        />
+        <view class="price-tag">¥{{item.minPrice}}起</view>
+      </view>
+
+      <!-- 酒店信息 -->
+      <view class="info-wrap">
+        <view class="name">{{item.name}}</view>
+        <view class="tag-wrap">
+          <text class="tag" wx:if="{{item.brand}}">{{item.brand}}</text>
+          <text class="tag star-tag">{{item.starRating}}星级</text>
+          <text class="tag score-tag">{{item.rating}}分</text>
+        </view>
+        <view class="address">{{item.city}}{{item.district}}{{item.address}}</view>
+        <view class="facilities">
+          <text wx:for="{{item.facilities.slice(0,3)}}" wx:key="index">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态/加载中 -->
+  <view class="empty" wx:if="{{hotelList.length === 0 && !isLoading}}">
+    <image src="/images/empty-hotel.png" class="empty-img" />
+    <text>暂无符合条件的酒店</text>
+  </view>
+  <view class="loading" wx:if="{{isLoading}}">加载中...</view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{!isLoading && hasMore}}">
+    <button bindtap="loadMore">加载更多</button>
+  </view>
+</view>
