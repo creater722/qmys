@@ -1,0 +1,68 @@
+<!--pages/emergency-guide/emergency-guide.wxml-->
+<view class="emergency-guide-page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navbar">
+    <view class="navbar-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="back-text">返回</text>
+    </view>
+    <view class="navbar-title">急诊指南</view>
+    <view class="navbar-right" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="page-content">
+    <!-- 头部 -->
+    <view class="header">
+      <view class="title">急诊指南</view>
+      <view class="subtitle">紧急情况下的应对流程与联系方式</view>
+    </view>
+
+    <!-- 流程步骤 -->
+    <view class="section">
+      <view class="section-title">🆘 急诊流程指南</view>
+      <view class="guide-list">
+        <view class="guide-item" wx:for="{{guideList}}" wx:key="index">
+          <view class="guide-icon">{{item.icon}}</view>
+          <view class="guide-content">
+            <view class="guide-title">{{item.title}}</view>
+            <view class="guide-desc">{{item.desc}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="section">
+      <view class="section-title">📞 紧急联系电话</view>
+      <view class="contact-list">
+        <view class="contact-item" wx:for="{{emergencyContacts}}" wx:key="index" data-number="{{item.number}}" bindtap="makeCall">
+          <view class="contact-icon" style="background-color: {{item.color}};">{{item.name.charAt(0)}}</view>
+          <view class="contact-info">
+            <view class="contact-name">{{item.name}}</view>
+            <view class="contact-number">{{item.number}}</view>
+          </view>
+          <button class="copy-btn" data-number="{{item.number}}" bindtap="copyNumber">复制</button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 温馨提示 -->
+    <view class="tip-box">
+      <view class="tip-title">💡 温馨提示</view>
+      <view class="tip-content">
+        1. 保持冷静，清晰描述病情<br/>
+        2. 准备好医保卡、身份证及常用药物<br/>
+        3. 如有过往病历，请一并携带<br/>
+        4. 避免单独前往，最好有人陪同
+      </view>
+    </view>
+    
+    <!-- 底部返回按钮 -->
+    <view class="bottom-actions">
+      <button class="back-btn" bindtap="goBack">返回上一页</button>
+      <button class="home-btn" bindtap="goHome">返回首页</button>
+    </view>
+  </view>
+</view>

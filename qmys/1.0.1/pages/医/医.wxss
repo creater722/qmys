@@ -1,3 +1,141 @@
+/* 搜索区域样式 */
+.search-box {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  background: #f5f5f5;
+  border-radius: 36rpx;
+  padding: 0 32rpx;
+  font-size: 28rpx;
+}
+
+.search-btn {
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #4facfe;
+  color: white;
+  border-radius: 36rpx;
+  padding: 0 32rpx;
+  font-size: 28rpx;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.location-icon {
+  margin-right: 8rpx;
+}
+
+.location-text {
+  flex: 1;
+}
+
+.refresh-location {
+  color: #4facfe;
+  margin-left: 16rpx;
+}
+
+/* 医院列表样式 */
+.hospital-list {
+  margin-top: 20rpx;
+}
+
+.hospital-item {
+  padding: 24rpx;
+  background: white;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.hospital-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.hospital-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #222;
+  flex: 1;
+}
+
+.hospital-distance {
+  font-size: 26rpx;
+  color: #4facfe;
+  margin-left: 16rpx;
+}
+
+.hospital-info {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.hospital-address {
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.hospital-phone {
+  display: block;
+}
+
+.hospital-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.tag {
+  padding: 4rpx 12rpx;
+  background: #f0f8ff;
+  color: #4facfe;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+/* 空状态提示 */
+.empty-tips {
+  text-align: center;
+  padding: 80rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 加载更多 */
+.load-more {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.load-more-text {
+  color: #4facfe;
+  font-size: 28rpx;
+}
+
+/* 原有样式保持不变 */
 page { height: 100vh; display: flex; flex-direction: column; }
 .scrollarea { flex: 1; overflow-y: hidden; }
 .content { padding: 24rpx; display: flex; flex-direction: column; gap: 24rpx; }
