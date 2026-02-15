@@ -1,5 +1,11 @@
 {
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/navigation-bar"
-  }
+  },
+  "navigationBarTitleText": "登录",
+  "navigationBarBackgroundColor": "#f5f7fa",
+  "navigationBarTextStyle": "black",
+  "disableScroll": false,
+  "initialRenderingCache": "static",
+  "renderer": "webview"
 }
