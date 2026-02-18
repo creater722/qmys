@@ -1,0 +1,73 @@
+<!--pages/national-insurance/national-insurance.wxml-->
+<view class="insurance-page">
+  <!-- 自定义导航栏 -->
+  <view class="custom-navbar">
+    <view class="navbar-left" bindtap="goBack">
+      <text class="back-icon">←</text>
+      <text class="back-text">返回</text>
+    </view>
+    <view class="navbar-title">国家医保服务</view>
+    <view class="navbar-right">
+      <text class="reload-icon" wx:if="{{loadError}}" bindtap="reloadPage">↻</text>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-container" wx:if="{{loading && !loadError}}">
+    <view class="loading-content">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">正在加载医保服务平台...</text>
+    </view>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="error-container" wx:if="{{loadError}}">
+    <view class="error-content">
+      <text class="error-icon">⚠️</text>
+      <text class="error-title">页面加载失败</text>
+      <text class="error-message">{{errorMsg}}</text>
+      
+      <view class="error-actions">
+        <button class="action-btn primary" bindtap="reloadPage">
+          <text class="btn-icon">↻</text>
+          <text class="btn-text">重新加载</text>
+        </button>
+        
+        <button class="action-btn secondary" bindtap="useAlternativeUrl">
+          <text class="btn-icon">🌐</text>
+          <text class="btn-text">切换网址</text>
+        </button>
+        
+        <button class="action-btn" bindtap="openInBrowser">
+          <text class="btn-icon">🔗</text>
+          <text class="btn-text">浏览器打开</text>
+        </button>
+      </view>
+      
+      <view class="error-tips">
+        <text class="tips-title">温馨提示：</text>
+        <text class="tips-content">
+          1. 请确保网络连接正常\n
+          2. 官方网站可能在维护中\n
+          3. 可尝试切换不同网址\n
+          4. 或稍后重新访问
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- web-view 容器 -->
+  <view class="webview-container" wx:if="{{!loading && !loadError}}">
+    <web-view 
+      src="{{url}}" 
+      bindload="onWebViewLoad"
+      binderror="onWebViewError"
+    ></web-view>
+  </view>
+
+  <!-- 底部安全提示 -->
+  <view class="safety-notice" wx:if="{{!loading && !loadError}}">
+    <text class="notice-icon">🔒</text>
+    <text class="notice-text">您正在访问国家医保服务平台，请注意个人信息安全</text>
+  </view>
+</view>

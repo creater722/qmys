@@ -1,67 +1,131 @@
-<!-- pages/login/login.wxml -->
 <view class="login-container">
-  <!-- 顶部logo/标题 -->
-  <view class="login-header">
-    <image class="logo" src="/images/logo.png" mode="widthFix"></image>
-    <view class="title">欢迎登录</view>
-    <view class="subtitle">体验更多专属功能</view>
+  <view class="login-wrapper">
+    <!-- 顶部logo/标题 -->
+    <view class="login-header">
+      <image class="logo" src="/images/logo.png" mode="widthFix"></image>
+      <view class="title">欢迎登录</view>
+      <view class="subtitle">体验更多专属功能</view>
+    </view>
+
+    <!-- 登录方式切换 -->
+    <view class="login-tabs">
+      <view class="tab-item {{loginType === 'wechat' ? 'active' : ''}}" 
+            bindtap="switchLoginType" 
+            data-type="wechat"
+            hover-class="tab-hover">
+        微信快捷登录
+      </view>
+      <view class="tab-item {{loginType === 'phone' ? 'active' : ''}}" 
+            bindtap="switchLoginType" 
+            data-type="phone"
+            hover-class="tab-hover">
+        手机号登录
+      </view>
+    </view>
+
+    <!-- 微信登录面板 -->
+    <view class="login-panel wechat-panel" wx:if="{{loginType === 'wechat'}}">
+      <!-- 解决电脑端点击层级问题 -->
+      <view class="btn-wrapper">
+        <button class="wechat-login-btn" 
+                bindtap="preLoginCheck" 
+                loading="{{isLoginLoading}}"
+                hover-class="btn-hover">
+          <image class="wechat-icon" src="/images/wechat.png" mode="widthFix"></image>
+          <text>微信快捷登录</text>
+        </button>
+      </view>
+      
+      <view class="agreement-section">
+        <!--增大点击区域，电脑端 -->
+        <view class="checkbox-wrapper {{isAgree ? 'checked' : ''}}" 
+              bindtap="toggleAgreement"
+              hover-class="checkbox-hover">
+          <view class="custom-checkbox">
+            <view class="check-mark" wx:if="{{isAgree}}">✓</view>
+          </view>
+        </view>
+        <view class="agreement-text">
+          <text>我已阅读并同意</text>
+          <text class="link" bindtap="openAgreement" data-type="user">《用户协议》</text>
+          <text>和</text>
+          <text class="link" bindtap="openAgreement" data-type="privacy">《隐私政策》</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 手机号登录面板 -->
+    <view class="login-panel phone-panel" wx:if="{{loginType === 'phone'}}">
+      <view class="form-item">
+        <input 
+          class="input" 
+          type="number" 
+          placeholder="请输入手机号" 
+          value="{{phoneNumber}}"
+          bindinput="onPhoneInput"
+          maxlength="11"
+          placeholder-class="input-placeholder"
+        />
+      </view>
+      <view class="form-item code-item">
+        <input 
+          class="input code-input" 
+          type="number" 
+          placeholder="请输入验证码" 
+          value="{{verifyCode}}"
+          bindinput="onCodeInput"
+          placeholder-class="input-placeholder"
+        />
+        <!--统一按钮样式处理 -->
+        <view class="code-btn-wrapper">
+          <button 
+            class="get-code-btn" 
+            bindtap="getVerifyCode"
+            disabled="{{countDown > 0 || !isPhoneValid}}"
+            hover-class="code-btn-hover">
+            {{countDown > 0 ? countDown + 's后重新获取' : '获取验证码'}}
+          </button>
+        </view>
+      </view>
+      <view class="btn-wrapper">
+        <button 
+          class="phone-login-btn" 
+          bindtap="onPhoneLogin"
+          disabled="{{!isPhoneValid || !verifyCode}}"
+          hover-class="btn-hover">
+          登录
+        </button>
+      </view>
+    </view>
   </view>
 
-  <!-- 登录方式切换 -->
-  <view class="login-tabs">
-    <view class="tab-item {{loginType === 'wechat' ? 'active' : ''}}" bindtap="switchLoginType" data-type="wechat">
-      微信快捷登录
-    </view>
-    <view class="tab-item {{loginType === 'phone' ? 'active' : ''}}" bindtap="switchLoginType" data-type="phone">
-      手机号登录
+  <!-- 协议确认弹窗 -->
+  <view class="agreement-modal {{showAgreementModal ? 'show' : ''}}" 
+        catchtouchmove="preventTouchMove">
+    <view class="modal-mask" bindtap="closeAgreementModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">服务协议与隐私保护</text>
+        <view class="close-btn" bindtap="closeAgreementModal">×</view>
+      </view>
+      <view class="modal-body">
+        <view class="modal-desc">
+          <text>为了保障您的权益，请阅读并同意</text>
+          <view class="highlight-links">
+            <text class="link" bindtap="openAgreement" data-type="user">《用户协议》</text>
+            <text>和</text>
+            <text class="link" bindtap="openAgreement" data-type="privacy">《隐私政策》</text>
+          </view>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <view class="modal-btn-wrapper">
+          <button class="btn-disagree" bindtap="closeAgreementModal" hover-class="btn-hover-gray">暂不同意</button>
+        </view>
+        <view class="modal-btn-wrapper">
+          <button class="btn-agree" bindtap="confirmAgreement" hover-class="btn-hover-green">同意并登录</button>
+        </view>
+      </view>
     </view>
   </view>
-
-  <!-- 微信登录面板 -->
-  <view class="login-panel" wx:if="{{loginType === 'wechat'}}">
-    <button class="wechat-login-btn" open-type="getUserProfile" bindgetuserprofile="onWechatLogin">
-      <image class="wechat-icon" src="/images/wechat.png" mode="widthFix"></image>
-      微信快捷登录
-    </button>
-    <view class="tips">登录即表示同意《用户协议》和《隐私政策》</view>
-  </view>
-
-  <!-- 手机号登录面板 -->
-  <view class="login-panel" wx:if="{{loginType === 'phone'}}">
-    <view class="form-item">
-      <input 
-        class="input" 
-        type="number" 
-        placeholder="请输入手机号" 
-        value="{{phoneNumber}}"
-        bindinput="onPhoneInput"
-        maxlength="11"
-      />
-    </view>
-    <view class="form-item code-item">
-      <input 
-        class="input code-input" 
-        type="number" 
-        placeholder="请输入验证码" 
-        value="{{verifyCode}}"
-        bindinput="onCodeInput"
-      />
-      <button 
-        class="get-code-btn" 
-        bindtap="getVerifyCode"
-        disabled="{{countDown > 0 || !isPhoneValid}}"
-      >
-        {{countDown > 0 ? countDown + 's后重新获取' : '获取验证码'}}
-      </button>
-    </view>
-    <button 
-      class="phone-login-btn" 
-      bindtap="onPhoneLogin"
-      disabled="{{!isPhoneValid || !verifyCode}}"
-    >
-      登录
-    </button>
-  </view>
-
-  <!-- 移除原有的wx-loading遮罩层，改用wx.showLoading API实现 -->
 </view>

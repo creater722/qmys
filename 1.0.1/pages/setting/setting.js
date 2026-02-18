@@ -8,6 +8,15 @@ Page({
     worksCount:0, yesterdayPlay:0, income:0,
     version:'1.0.0'
   },
+  goBack() {
+    // 新增：打印日志，确认点击时是否进入该函数
+    console.log("点击了返回按钮，触发goBack函数");
+    wx.navigateBack({
+      delta: 1,
+      animationType: "popOut",
+      animationDuration: 300
+    });
+  },
   onLoad(){
     this.loadSettings();
     this.getCreatorStats();

@@ -10,7 +10,17 @@ App({
   onLaunch(options) {
     this.checkLoginStatus(options);
   },
-
+  "plugins": {
+    "amap-plugin": {
+      "version": "1.0.0",
+      "provider": "wx5bc2ac602a747594"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于查找附近医院"
+    }
+  },
   // 小程序切回前台时执行（防止用户退出后重新进入未校验）
   onShow(options) {
     this.checkLoginStatus(options);
