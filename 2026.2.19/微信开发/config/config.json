@@ -1,0 +1,51 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "qmys",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_unicode_ci",
+      "timestamps": true,
+      "underscored": true,
+      "freezeTableName": true
+    },
+    "pool": {
+      "max": 10,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    },
+    "logging": true
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "qmys_test",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "logging": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "qmys_production",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "timezone": "+08:00",
+    "pool": {
+      "max": 20,
+      "min": 5,
+      "acquire": 60000,
+      "idle": 20000
+    },
+    "logging": false
+  }
+}
