@@ -1,0 +1,9 @@
+<!--components/GaodeInputTips/GaodeInputTips.wxml-->
+<view class="input-item">
+  <input value="{{currentInputValue}}" data-city="{{city}}" data-longitude="{{longitude}}" data-latitude="{{latitude}}" placeholder="{{placeholder}}"bindinput="bindInput" bindfocus="handleFocus" bindblur="handleBlur" bindconfirm="bindConfirm" confirm-type="search"/>
+  <view class="tips_container" wx:if="{{tipsShow}}">
+    <view bindtouchstart="bindSearch" data-info="{{i}}" data-keywords="{{i.name}}" class="text_box" wx:for="{{tips}}" wx:for-item="i" wx:key="i">
+      {{i.name}}
+    </view>
+  </view>
+</view>

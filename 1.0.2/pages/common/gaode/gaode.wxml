@@ -1,0 +1,21 @@
+<!--pages/common/gaode/gaode.wxml-->
+<GaodeHeader bindchangeType="changeGaodeType" type="{{gaode_type}}" NavigationOrNot="{{daohang}}"></GaodeHeader>
+<view class="input-wrapper">
+<!-- 当前位置 -->
+<GaodeInputTips bindchangeType="handleCustomEvent" city="{{city}}" longitude="{{longitude}}" latitude="latitude" placeholder="请输入当前位置" inputValue="{{startInputValue}}"  inputType="start" bindcustomEvent="handleCustomEvent"></GaodeInputTips>
+  <!-- 目的地 -->
+  <GaodeInputTips bindchangeType="handleCustomEvent" city="{{city_e}}" longitude="{{longitude_e}}" latitude="{{latitude_e}}"placeholder="请输入目的地"
+  inputValue="{{endInputValue}}" inputType="end" bindcustomEvent="handleCustomEvent"></GaodeInputTips>
+</view>
+<view class="map-container">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap" polyline="{{polyline}}" include-point="{{includePoints}}" bindtap="onMapTap"></map>
+</view>
+
+<view class="map_text {{daohang ? 'has-route' : ''}}">
+  <text class="h1">{{textData.name}}</text>
+  <text>{{textData.desc}}</text>
+  <view class="text_box" wx:if="{{daohang}}">
+    <view class="text">{{distance}}</view>
+    <view class="text">{{cost}}</view>
+  </view>
+</view>
