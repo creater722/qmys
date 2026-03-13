@@ -1,42 +1,36 @@
 <view class="page {{theme}}">
   <navigation-bar title="我的喜欢" />
-  
-  <!-- 骨架屏 -->
-  <view wx:if="{{loading && likeList.length===0}}" class="skeleton">
-    <block wx:for="{{8}}" wx:key="*this">
+
+  <view wx:if="{{loading}}" class="skeleton">
+    <block wx:for="{{8}}" wx:key="*">
       <view class="sk-card">
-        <view class="sk-cover"/>
-        <view class="sk-line sk-title"/>
-        <view class="sk-line sk-sub"/>
+        <view class="sk-cover"></view>
+        <view class="sk-line"></view>
+        <view class="sk-line"></view>
       </view>
     </block>
   </view>
 
-  <!-- 无数据空态 -->
-  <view wx:elif="{{likeList.length===0 && !loading}}" class="empty">
-    <text>还没有喜欢的内容</text>
+  <view wx:elif="{{likeList.length === 0}}" class="empty">
+    <text>暂无喜欢内容</text>
   </view>
 
-  <!-- 喜欢列表 -->
-  <view wx:else>
-    <scroll-view scroll-y refresher-enabled refresher-triggered="{{isRefreshing}}"
-                 bindrefresherrefresh="onRefresh" bindscrolltolower="onLoadMore"
-                 class="list">
-      <view class="card" wx:for="{{likeList}}" wx:key="id" bindtap="goDetail" data-item="{{item}}">
-        <image class="cover" src="{{item.cover}}" mode="aspectFill" lazy-load/>
+  <view class="list" wx:else>
+    <scroll-view scroll-y>
+      <view class="card" wx:for="{{likeList}}" wx:key="id">
+        <view class="cover"></view>
+        
         <view class="meta">
           <text class="title">{{item.title}}</text>
-          <text class="sub">{{item.desc}}</text>
+          <text class="desc">{{item.desc}}</text>
           <view class="bottom">
             <text class="date">{{item.date}}</text>
-            <text class="iconfont icon-heart-fill liked"/>
-            <!-- 取消喜欢按钮 -->
-            <text class="del-btn" catchtap="delLike" data-id="{{item.id}}">取消</text>
+            <text class="heart" catchtap="deleteLike" data-id="{{item.id}}">♥</text>
           </view>
         </view>
       </view>
-      <view wx:if="{{hasMore}}" class="load-more">正在加载…</view>
-      <view wx:elif="{{!hasMore && likeList.length>0}}" class="load-more">已经到底啦</view>
     </scroll-view>
   </view>
+
+  <view class="load-more">已经到底了</view>
 </view>
