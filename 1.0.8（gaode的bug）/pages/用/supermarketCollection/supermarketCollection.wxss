@@ -1,0 +1,225 @@
+.hero {
+  padding: 20rpx;
+  text-align: center;
+  background: #f5f5f5;
+  margin-bottom: 20rpx;
+}
+
+.hero-collection {
+  background: linear-gradient(135deg, #ff4757, #ff6b81);
+  color: white;
+}
+
+.hero-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.hero-subtitle {
+  font-size: 32rpx;
+  opacity: 0.9;
+  margin-bottom: 20rpx;
+}
+
+.scrollarea {
+  height: calc(100vh - 120rpx);
+}
+
+.content {
+  padding: 20rpx;
+}
+
+.section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.supermarket-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.supermarket-item {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: calc(50% - 10rpx);
+  align-items: flex-start;
+}
+
+.supermarket-item:hover {
+  transform: translateY(-2rpx);
+}
+
+.supermarket-image {
+  width: 100%;
+  height: 200rpx;
+  flex-shrink: 0;
+}
+
+.supermarket-info {
+  flex: 1;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.supermarket-action {
+  padding: 0 20rpx 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.supermarket-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.supermarket-address {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  line-height: 1.4;
+}
+
+.supermarket-distance {
+  font-size: 30rpx;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+.supermarket-action {
+  padding: 20rpx;
+}
+
+.uncollect-button {
+  background: none;
+  border: none;
+  padding: 10rpx;
+}
+
+.uncollect-icon {
+  font-size: 40rpx;
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 120rpx);
+  padding: 20rpx;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 8rpx solid #f3f3f3;
+  border-top: 8rpx solid #ff4757;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #666;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 20rpx;
+  background: #f9f9f9;
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.refresh-button {
+  padding: 16rpx 40rpx;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+}
+
+/* 底部按钮 */
+.bottom-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: white;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.bottom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 24rpx;
+  padding: 20rpx;
+  font-size: 32rpx;
+  width: 100%;
+}
+
+.bottom-button-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.bottom-button-text {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+/* 调整scrollarea的高度，避免被底部按钮遮挡 */
+.scrollarea {
+  height: calc(100vh - 200rpx);
+}

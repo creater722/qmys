@@ -1,0 +1,40 @@
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+.container {
+  padding: 32rpx;
+}
+.article-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.4;
+  margin-bottom: 24rpx;
+}
+.article-meta {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+.author {
+  margin-left: 16rpx;
+  color: #576b95;
+}
+.article-content {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.8;
+  text-align: justify;
+}
+.p {
+  margin-bottom: 24rpx;
+}

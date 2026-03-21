@@ -1,0 +1,18 @@
+/**app.wxss**/
+.container { height: 100%; display: flex; flex-direction: column; box-sizing: border-box; }
+.scrollarea { flex: 1; overflow-y: hidden; }
+.content { padding: 24rpx; display: flex; flex-direction: column; gap: 24rpx; }
+.section { background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.06); }
+.section-title { font-size: 32rpx; font-weight: 600; color: #111; }
+.section-desc { margin-top: 8rpx; font-size: 28rpx; color: #666; line-height: 1.6; }
+.list { margin-top: 8rpx; }
+.list .list-item { padding: 20rpx 0; font-size: 28rpx; color: #333; border-bottom: 1rpx solid #f0f0f0; }
+.list .list-item:last-child { border-bottom: none; }
+.hero { margin: 24rpx; margin-bottom: 8rpx; border-radius: 20rpx; padding: 40rpx 32rpx; color: #fff; }
+.hero-title { font-size: 48rpx; font-weight: 700; }
+.hero-subtitle { margin-top: 8rpx; font-size: 28rpx; opacity: 0.9; }
+.hero-medical { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.hero-food { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+.hero-live { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+.hero-travel { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+.hero-use { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }

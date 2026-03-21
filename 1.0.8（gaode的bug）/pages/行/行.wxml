@@ -1,0 +1,46 @@
+<navigation-bar title="行" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-travel">
+  <view class="hero-title">出行与交通</view>
+  <view class="hero-subtitle">让出行更顺畅</view>
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="section">
+      <view class="section-title">出行与交通说明</view>
+      <view class="section-desc">提供公交地铁查询、打车服务、共享出行与驾车导航。</view>
+    </view>
+    <view class="section">
+      <view class="section-title">常用功能</view>
+      <view class="list">
+        <view class="list-item" bindtap="handleTap" data-key="transit">
+          <text class="item-icon">🚉</text>
+          <view class="item-main">
+            <view class="item-title accent">公交/地铁查询</view>
+            <view class="item-desc">路线规划与实时到站</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="taxi">
+          <text class="item-icon">🚖</text>
+          <view class="item-main">
+            <view class="item-title accent">打车服务</view>
+            <view class="item-desc">多平台价格与等待时长</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="shared">
+          <text class="item-icon">🚲</text>
+          <view class="item-main">
+            <view class="item-title accent">共享出行</view>
+            <view class="item-desc">共享单车与电动车可用性</view>
+          </view>
+        </view>
+        <view class="list-item" bindtap="handleTap" data-key="drive">
+          <text class="item-icon">🚗</text>
+          <view class="item-main">
+            <view class="item-title accent">驾车导航</view>
+            <view class="item-desc">实时路况与替代路线</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

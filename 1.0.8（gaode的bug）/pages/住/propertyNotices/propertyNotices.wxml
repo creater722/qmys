@@ -1,0 +1,73 @@
+<!-- 伪tabbar
+此页面为物业公告
+添加
+1.交水电
+2.我的
+ -->
+ <view class="page-wrap">
+  <view class="container">
+    <!-- 标题栏（简化布局，确保返回按钮显示） -->
+    <view class="title-bar">
+      <!-- 返回按钮（调整层级，确保可见） -->
+      <view class="back-btn" bindtap="goBack">
+        <text class="back-icon">←</text>
+        <text class="back-text">返回</text>
+      </view>
+      <!-- 标题 -->
+      <view class="page-title">物业公告</view>
+    </view>
+
+    <!-- 公告列表 -->
+    <view class="notice-item" wx:for="{{noticesList}}" wx:key="id">
+      <view class="notice-title">{{item.title || '无标题'}}</view>
+      <view class="notice-content">{{item.content || '无内容'}}</view>
+      <view class="notice-time">{{item.createTime || '未知时间'}}</view>
+    </view>
+
+    <!-- 空数据提示 -->
+    <view class="empty" wx:if="{{noticesList.length === 0 && !isLoading}}">
+      暂无公告
+    </view>
+
+    <!-- 加载中提示 -->
+    <view class="loading" wx:if="{{isLoading}}">
+      加载中...
+    </view>
+
+    <!-- 没有更多数据 -->
+    <view class="no-more" wx:if="{{!hasMore && noticesList.length > 0}}">
+      没有更多数据了
+    </view>
+  </view>
+
+  <!-- 伪TabBar -->
+  <view class="custom-tabbar">
+    <!-- 物业公告（当前页） -->
+    <view 
+      class="tab-item {{activeTab === 'notice' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="notice"
+    >
+      <text class="tab-icon">📢</text>
+      <text class="tab-text">物业公告</text>
+    </view>
+    <!-- 交水电 -->
+    <!-- <view 
+      class="tab-item {{activeTab === 'pay' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="pay"
+    >
+      <text class="tab-icon">💧</text>
+      <text class="tab-text">交水电</text>
+    </view> -->
+    <!-- 我的 -->
+    <view 
+      class="tab-item {{activeTab === 'mine' ? 'active' : ''}}"
+      bindtap="switchTab"
+      data-tab="mine"
+    >
+      <text class="tab-icon">👤</text>
+      <text class="tab-text">我的</text>
+    </view>
+  </view>
+</view>

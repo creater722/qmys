@@ -1,0 +1,64 @@
+<!--pages/common/gaode/gaode.wxml-->
+<navigation-bar title="出行" color="black" background="#FFF"></navigation-bar>
+
+<!-- 顶部固定区域：Header + Tips -->
+<view class="header-tips-container">
+  <GaodeHeader bindchangeType="changeGaodeType" type="{{gaode_type}}" NavigationOrNot="{{daohang}}"></GaodeHeader>
+  <view class="input-wrapper">
+    <!-- 当前位置 -->
+    <GaodeInputTips bindchangeType="handleCustomEvent" city="{{city}}" longitude="{{longitude}}" latitude="latitude" placeholder="请输入当前位置" inputValue="{{startInputValue}}"  inputType="start" bindcustomEvent="handleCustomEvent"></GaodeInputTips>
+    <!-- 目的地 -->
+    <GaodeInputTips bindchangeType="handleCustomEvent" city="{{city_e}}" longitude="{{longitude_e}}" latitude="{{latitude_e}}"placeholder="请输入目的地"
+    inputValue="{{endInputValue}}" inputType="end" bindcustomEvent="handleCustomEvent"></GaodeInputTips>
+  </view>
+</view>
+<!-- 公交/地铁模式：点击确定前显示地图，点击后显示公交/地铁列表 -->
+<view class="map-container" wx:if="{{gaode_type === 'bus' && !daohang}}">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{mapScale}}" show-location="true" markers="{{markers}}" bindmarkertap="makertap" polyline="{{polyline}}" include-points="{{includePoints}}" bindtap="onMapTap"></map>
+</view>
+
+<!-- 公交/地铁模式：点击确定后显示公交/地铁列表 -->
+<view class="bus-container" wx:if="{{gaode_type === 'bus' && daohang}}">
+  <view class="bus-list" wx:if="{{mapState && transits.length > 0}}">
+    <view class="bus-item" wx:for="{{transits}}" wx:for-item="i" wx:key="index" bindtap="selectBusRoute" data-index="{{index}}">
+      <view class="bus-header">
+        <text class="bus-time">{{i.durationStr}}</text>
+        <text class="bus-distance">{{i.distanceStr}}</text>
+      </view>
+      <view class="bus-lines">
+        <text class="bus-line" wx:for="{{i.transport}}" wx:for-item="j" wx:key="j">{{j}}</text>
+      </view>
+      <view class="bus-walking">{{i.walkingStr}}</view>
+    </view>
+  </view>
+  <!-- 搜索中 -->
+  <view class="bus-loading" wx:if="{{!mapState}}">搜索中···</view>
+  <!-- 无数据提示 -->
+  <view class="bus-empty" wx:if="{{mapState && transits.length === 0}}">暂无公交/地铁路线</view>
+</view>
+
+<!-- 非公交/地铁模式：显示地图 -->
+<view class="map-container" wx:if="{{gaode_type !== 'bus'}}">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{mapScale}}" show-location="true" markers="{{markers}}" bindmarkertap="makertap" polyline="{{polyline}}" include-points="{{includePoints}}" bindtap="onMapTap"></map>
+</view>
+
+<view class="map_text {{daohang ? 'has-route' : ''}}" wx:if="{{gaode_type !== 'bus' || (gaode_type === 'bus' && !daohang)}}">
+  <text class="h1">{{textData.name}}</text>
+  <text>{{textData.desc}}</text>
+  <view class="route_info" wx:if="{{daohang && gaode_type !== 'bus'}}">
+    <view class="info_item">
+      <text class="label">距离</text>
+      <text class="value distance">{{distance}}</text>
+    </view>
+    <view class="info_item">
+      <text class="label">时间</text>
+      <text class="value time">{{cost}}</text>
+    </view>
+  </view>
+  <view class="button_box">
+    <button class="btn-confirm" wx:if="{{!daohang && gaode_type !== 'taxi'}}" bindtap="confirmRoute">确定</button>
+    <button class="btn-start" wx:if="{{!daohang && gaode_type === 'taxi'}}" bindtap="startNavigation">立即打车</button>
+    <button class="btn-start" wx:if="{{daohang && gaode_type !== 'bus' && gaode_type !== 'taxi'}}" bindtap="startNavigation">开始导航</button>
+    <button class="btn-start" wx:if="{{daohang && gaode_type === 'taxi'}}" bindtap="startNavigation">立即打车</button>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<navigation-bar title="{{title}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="card" bindtap="onItemTap" data-id="{{item.id}}">
+        <image class="card-img" src="{{item.image}}" mode="aspectFill" wx:if="{{item.image}}"></image>
+        <view class="card-info">
+          <view class="card-title">{{item.title}}</view>
+          <view class="card-desc">{{item.desc}}</view>
+          <view class="card-tags" wx:if="{{item.tags}}">
+            <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty" wx:if="{{list.length === 0}}">
+      <text>暂无相关信息</text>
+    </view>
+  </view>
+</scroll-view>

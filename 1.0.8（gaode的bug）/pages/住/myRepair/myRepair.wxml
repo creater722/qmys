@@ -1,0 +1,59 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">我的维修工单</view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="loading">
+    <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
+  </view>
+
+  <!-- 空数据提示 -->
+  <view wx:elif="{{myOrders.length === 0 && !isLoading}}" class="empty">
+    <image src="/images/empty-order.png" class="empty-img" />
+    <text class="empty-text">暂无提交的维修工单</text>
+    <button class="empty-btn" bindtap="goRepair">去提交工单</button>
+  </view>
+
+  <!-- 工单列表 -->
+  <view wx:else class="order-list">
+    <view class="order-item" wx:for="{{myOrders}}" wx:key="orderId">
+      <view class="order-header">
+        <text class="order-no">工单编号：{{item.orderNo}}</text>
+        <text class="order-status {{item.status === 'submitted' ? 'status-pending' : 'status-done'}}">
+          {{getStatusText(item.status)}}
+        </text>
+      </view>
+      <view class="order-body">
+        <view class="order-row">
+          <text class="label">故障类型：</text>
+          <text class="value">{{item.repairType}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">故障描述：</text>
+          <text class="value">{{item.description}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">维修地址：</text>
+          <text class="value">{{item.address}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">联系电话：</text>
+          <text class="value">{{item.contactPhone}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">提交时间：</text>
+          <text class="value">{{formatTime(item.createTime)}}</text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <button class="btn-cancel" bindtap="cancelOrder" data-orderid="{{item.orderId}}">取消工单</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <van-icon name="arrow-left" />
+    <text>返回</text>
+  </view>
+</view>

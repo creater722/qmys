@@ -1,0 +1,30 @@
+/* components/GaodeHeader/GaodeHeader.wxss */
+.flex-style{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0 60rpx;
+  justify-content: space-between;
+  position: relative; /* 改为相对定位，由父容器控制 */
+  z-index: 1;
+}
+.flex-style.active{
+  /* background: #ffffff; */
+  opacity: 1;
+  pointer-events: initial;
+}
+.flex-item{
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 22%;
+  border-radius: 8rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.flex-item.active{
+  color: #0091ff;           
+  /* background-color: #e6f7ff; 激活背景色 */
+  font-weight: 700;         
+  position: relative;
+}

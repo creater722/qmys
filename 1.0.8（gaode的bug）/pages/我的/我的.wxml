@@ -1,0 +1,95 @@
+<view class="page {{theme}}">
+  <!-- 用户信息区 -->
+  <view class="header">
+    <view class="user" bindtap="goProfile">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"/>
+      <view class="info">
+        <text class="nick">{{userInfo.nickName}}</text>
+        <text wx:if="{{vipDays>0}}" class="vip-tag">VIP{{vipLevel}}</text>
+      </view>
+    </view>
+    <text class="qr iconfont icon-qr" bindtap="showQR"/>
+  </view>
+
+  <!-- 会员卡片 -->
+  <view wx:if="{{vipDays>0}}" class="vip-card">
+    <view class="top">
+      <text class="title">会员特权</text>
+      <text class="days">{{vipDays}} 天后到期</text>
+    </view>
+    <view class="privilege">
+      <block wx:for="{{privilegeList}}" wx:key="id">
+        <view class="item" bindtap="goVipPage" data-id="{{item.id}}">
+          <text class="icon iconfont {{item.icon}}"/>
+          <text class="txt">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+    <button type="primary" size="mini" bindtap="renewVip">立即续费</button>
+  </view>
+
+  <!-- 常用工具 -->
+  <view class="tool-box">
+    <block wx:for="{{toolList}}" wx:key="id">
+      <view class="tool-item" bindtap="toolTap" data-url="{{item.url}}">
+        <text class="icon iconfont {{item.icon}}"/>
+        <text class="txt">{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 订单 & 钱包 -->
+  <view class="order-wallet">
+    <view class="cell" bindtap="goOrder" data-tab="0">
+      <text>我的订单</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="sub-nav">
+      <block wx:for="{{orderTabs}}" wx:key="id">
+        <view class="sub-item" bindtap="goOrder" data-tab="{{index+1}}">
+          <text class="num">{{item.count}}</text>
+          <text class="txt">{{item.name}}</text>
+          <view wx:if="{{item.count>0}}" class="dot"/>
+        </view>
+      </block>
+    </view>
+
+    <view class="wallet">
+      <block wx:for="{{walletList}}" wx:key="id">
+        <view class="wallet-item" bindtap="walletTap" data-type="{{item.type}}">
+          <text class="num">{{item.num}}</text>
+          <text class="txt">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 创作者·计划 -->
+  <view class="creator-card">
+    <view class="left">
+      <text class="title">创作者 · 计划</text>
+      <text class="sub">{{creatorTxt}}</text>
+    </view>
+    <view class="right">
+      <text class="income">昨日收益 ¥{{yesterdayIncome}}</text>
+      <button wx:if="{{!creatorOpened}}" type="primary" size="mini" bindtap="openCreator">立即开通</button>
+      <button wx:else type="default" size="mini" bindtap="goCreator">去创作</button>
+    </view>
+  </view>
+
+  <!-- 关于 & 设置 -->
+  <view class="footer">
+    <view class="cell" bindtap="goAbout">
+      <text>关于我们</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="cell" bindtap="goSettings">
+      <text>设置</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="cell" bindtap="openCustomer">
+      <text>联系客服</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+</view>

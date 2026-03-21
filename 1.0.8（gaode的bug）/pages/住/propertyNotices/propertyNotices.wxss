@@ -1,0 +1,135 @@
+/* 新增：外层容器，给TabBar预留底部空间 */
+.page-wrap {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 100rpx; /* 适配TabBar高度 */
+  background-color: #f8f8f8;
+}
+
+/* 标题栏：使用flex布局，确保按钮和标题并列 */
+.title-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  background: #f8f8f8;
+  /* 增加层级，防止被遮挡 */
+  position: relative;
+  z-index: 10;
+}
+
+/* 返回按钮：简化样式，确保可见 */
+.back-btn {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 28rpx;
+  /* 增加点击区域 */
+  padding: 10rpx 15rpx;
+  border-radius: 8rpx;
+  background: #f5f5f5;
+}
+
+.back-icon {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+/* 标题：不设置margin，避免遮挡 */
+.page-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  /* 让标题居中 */
+  flex: 1;
+  text-align: center;
+}
+
+/* 原有样式保留 */
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.notice-item {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.notice-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.notice-content {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.notice-time {
+  font-size: 22rpx;
+  color: #999;
+  text-align: right;
+}
+
+.empty, .no-more, .loading {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  padding: 40rpx 0;
+}
+
+/* ========== 伪TabBar核心样式 ========== */
+.custom-tabbar {
+  position: fixed; /* 固定在底部 */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid #eee;
+  z-index: 999; /* 确保在最上层 */
+  box-shadow: 0 -2rpx 8rpx rgba(0,0,0,0.03); /* 轻微阴影提升质感 */
+}
+
+/* Tab项基础样式 */
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: #999; /* 未选中态颜色 */
+  font-size: 24rpx;
+  cursor: pointer;
+  transition: color 0.2s ease; /* 选中态过渡动画 */
+}
+
+/* Tab选中态样式（物业场景蓝色） */
+.tab-item.active {
+  color: #007aff;
+  font-weight: 500;
+}
+
+/* Tab图标样式 */
+.tab-icon {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+/* Tab文字样式 */
+.tab-text {
+  line-height: 1;
+  font-size: 22rpx;
+}

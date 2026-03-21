@@ -1,0 +1,72 @@
+<!-- pages/住/hotel_user/orderConfirm/orderConfirm.wxml -->
+<view class="page-container">
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+    <text class="back-text">返回</text>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="order-info">
+    <view class="title">订单信息</view>
+    <view class="info-item">
+      <text class="label">酒店名称</text>
+      <text class="value">{{hotel.name || '加载中...'}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">房型</text>
+      <text class="value">{{room.roomType || '加载中...'}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">价格</text>
+      <text class="value price">¥{{room.price || 0}}/晚</text>
+    </view>
+  </view>
+
+  <!-- 入住信息 -->
+  <view class="checkin-info">
+    <view class="title">入住信息</view>
+    <view class="date-item">
+      <text class="label">入住日期</text>
+      <picker mode="date" value="{{checkIn}}" start="{{minDate}}" end="{{maxDate}}" bindchange="bindCheckInChange">
+        <view class="picker-value">{{checkIn}}</view>
+      </picker>
+    </view>
+    <view class="date-item">
+      <text class="label">退房日期</text>
+      <picker mode="date" value="{{checkOut}}" start="{{checkIn}}" end="{{maxDate}}" bindchange="bindCheckOutChange">
+        <view class="picker-value">{{checkOut}}</view>
+      </picker>
+    </view>
+    <view class="guest-item">
+      <text class="label">入住人数</text>
+      <view class="guest-control">
+        <button class="btn-minus" bindtap="adjustGuestCount" data-type="minus">-</button>
+        <text class="guest-count">{{guestCount}}</text>
+        <button class="btn-plus" bindtap="adjustGuestCount" data-type="plus">+</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联系人信息 -->
+  <view class="contact-info">
+    <view class="title">联系人信息</view>
+    <view class="input-item">
+      <text class="label">姓名</text>
+      <input class="input" placeholder="" value="{{contactName}}" bindinput="inputName" />
+    </view>
+    <view class="input-item">
+      <text class="label">电话</text>
+      <input class="input" placeholder="" value="{{contactPhone}}" bindinput="inputPhone" type="number" />
+    </view>
+    <view class="input-item">
+      <text class="label">备注</text>
+      <textarea class="textarea" placeholder="如有特殊需求，请填写备注" value="{{remark}}" bindinput="inputRemark"></textarea>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="submit-wrap">
+    <button class="submit-btn" bindtap="submitOrder">提交订单</button>
+  </view>
+</view>

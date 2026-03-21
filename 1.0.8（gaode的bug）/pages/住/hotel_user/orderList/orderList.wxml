@@ -1,0 +1,82 @@
+<view class="order-list-page">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <view class="nav-title">我的酒店订单</view>
+    <view class="nav-right"></view>
+  </view>
+
+  <!-- 订单列表主体 -->
+  <scroll-view 
+    scroll-y 
+    class="order-list-container"
+    refresher-enabled="true"
+    bindrefresherrefresh="onPullDownRefresh"
+    bindscrolltolower="onReachBottom"
+  >
+    <!-- 订单列表 -->
+    <view class="order-list" wx:if="{{hasOrder}}">
+      <view class="order-item" wx:for="{{orderList}}" wx:key="x">
+        <!-- 订单头部 -->
+        <view class="order-header">
+          <view class="order-no">订单号：{{item.a}}</view>
+          <view class="order-status {{item.b}}">{{item.c}}</view>
+        </view>
+
+        <!-- 酒店信息 -->
+        <view class="hotel-info" bindtap="goToDetail" data-x="{{item.x}}">
+          <image class="hotel-cover" src="{{item.d}}" mode="aspectFill"></image>
+          <view class="hotel-detail">
+            <view class="hotel-name">{{item.e}}</view>
+            <view class="room-type">房型：{{item.f}}</view>
+            <view class="date-range">
+              <text>入住：{{item.g}}</text>
+              <text>|</text>
+              <text>退房：{{item.h}}</text>
+            </view>
+            <view class="create-time">创建时间：{{item.i}}</view>
+          </view>
+        </view>
+
+        <!-- 价格 + 操作按钮 -->
+        <view class="order-footer">
+          <view class="total-price">总计：{{item.j}}</view>
+          <view class="order-actions">
+            <!-- 待支付 -->
+            <block wx:if="{{item.k == 0}}">
+              <button class="btn pay-btn" bindtap="toPay" data-x="{{item.x}}" data-y="{{item.j}}">去支付</button>
+              <button class="btn cancel-btn" bindtap="cancelOrder" data-x="{{item.x}}" data-z="{{item.z}}">取消订单</button>
+            </block>
+            <!-- 已支付/已完成 -->
+            <block wx:if="{{item.k == 1 || item.k == 3}}">
+              <button class="btn detail-btn" bindtap="goToDetail" data-x="{{item.x}}">查看详情</button>
+            </block>
+            <!-- 已取消 -->
+            <block wx:if="{{item.k == 2}}">
+              <button class="btn detail-btn disabled" bindtap="goToDetail" data-x="{{item.x}}">查看详情</button>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空数据 -->
+    <view class="empty-container" wx:elif="{{showEmpty}}">
+      <image class="empty-img" src="https://via.placeholder.com/180x100?text=暂无订单" mode="widthFix"></image>
+      <view class="empty-text">暂无酒店订单</view>
+      <button class="empty-btn" bindtap="goBack">返回首页</button>
+    </view>
+
+    <!-- 加载中 -->
+    <view class="loading-container" wx:if="{{showLoading}}">
+      <loading></loading>
+    </view>
+
+    <!-- 没有更多 -->
+    <view class="no-more" wx:if="{{showNoMore}}">
+      没有更多订单了
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,151 @@
+/* pages/住/hotel_user/addHotel/addHotel.wxss */
+page {
+  background-color: #f5f5f5;
+}
+
+.add-hotel {
+  padding: 0 30rpx 60rpx;
+  min-height: 100vh;
+}
+
+/* 返回按钮 */
+.back-btn {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.back-icon {
+  font-size: 32rpx;
+  margin-right: 8rpx;
+}
+
+.back-text {
+  font-size: 28rpx;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin: 10rpx 0 30rpx;
+}
+
+/* 表单组 */
+.form-group {
+  background: #fff;
+  padding: 24rpx 30rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.form-input {
+  font-size: 30rpx;
+  padding: 8rpx 0;
+  border-bottom: 1rpx solid #eee;
+  color: #333;
+}
+
+/* 提示文字 */
+.tips-text {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+  display: block;
+}
+
+/* 房型列表 */
+.room-list {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.list-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  display: block;
+  font-weight: 500;
+}
+
+.room-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.room-input-wrap {
+  display: flex;
+  gap: 20rpx;
+}
+
+.room-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #333;
+  margin-right: 10rpx;
+  white-space: nowrap;
+}
+
+.room-input-text {
+  font-size: 28rpx;
+  flex: 1;
+  padding: 8rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.delete-btn {
+  align-self: flex-end;
+  color: #f56c6c;
+  font-size: 26rpx;
+  padding: 10rpx 0;
+}
+
+/* 添加房型按钮 */
+.add-room-btn {
+  text-align: center;
+  padding: 16rpx;
+  font-size: 28rpx;
+  color: #409eff;
+  border: 1rpx dashed #409eff;
+  border-radius: 8rpx;
+  margin-top: 10rpx;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  width: 100%;
+  padding: 24rpx;
+  background: #409eff;
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 20rpx;
+}
+
+.submit-btn[disabled] {
+  background: #ccc;
+  color: #fff;
+}

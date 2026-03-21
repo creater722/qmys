@@ -1,0 +1,308 @@
+/* pages/common/gaode/gaode.wxss */
+page {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 顶部固定区域：Header + Tips */
+.header-tips-container {
+  position: fixed;
+  top: 168rpx; /* 在导航栏下方 */
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #f0f8ff; /* 淡蓝色背景，与上方白色导航栏和下方灰色列表都区分 */
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08); /* 阴影增加层次感 */
+}
+
+.input-wrapper {
+  background-color: #f0f8ff; 
+  padding: 10rpx 20rpx 20rpx 20rpx; 
+  box-sizing: border-box; 
+}
+
+/* 地图区域 */
+.map-container {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 320rpx; /* 更紧贴 header-tips-container 下方 */
+  height: calc(100vh - 320rpx);
+}
+
+.map {
+  width: 100%;
+  flex: 1;
+  min-height: 0; /* 允许缩小 */
+}
+
+/* 公交容器 */
+.bus-container {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  padding: 320rpx 20rpx 20rpx 20rpx; /* 上边距更紧贴 header-tips-container */
+  box-sizing: border-box;
+}
+
+.bus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.bus-item {
+  background-color: white;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bus-item:active {
+  background-color: #f5f5f5;
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.bus-item:first-child {
+  border: 3rpx solid #0091ff;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+}
+
+.bus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.bus-time {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #0091ff;
+}
+
+.bus-distance {
+  font-size: 36rpx;
+  color: #666;
+}
+
+.bus-lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.bus-line {
+  background-color: #e6f7ff;
+  color: #0091ff;
+  padding: 16rpx 32rpx;
+  border-radius: 12rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.bus-walking {
+  font-size: 32rpx;
+  color: #999;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.bus-loading,
+.bus-empty {
+  text-align: center;
+  padding: 100rpx 40rpx;
+  font-size: 40rpx;
+  color: #999;
+}
+
+/* 地点信息卡片 */
+.map_text {
+  background-color: white;
+  padding: 30rpx 30rpx;
+  margin: 0 20rpx 20rpx 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  border-radius: 20rpx;
+  height: auto;
+  min-height: 180rpx;
+  max-height: 320rpx;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* 卡片顶部小把手样式 */
+.map_text::before {
+  content: '';
+  position: absolute;
+  top: 12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70rpx;
+  height: 6rpx;
+  background-color: #e0e0e0;
+  border-radius: 3rpx;
+}
+
+.h1 {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+  line-height: 1.4;
+  display: block;
+}
+
+.desc {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  line-height: 1.5;
+  display: block;
+}
+
+/* 路线信息显示区域 */
+.route_info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid #eee;
+  padding: 24rpx 0;
+  margin-top: 10rpx;
+}
+
+.info_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.info_item .label {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.info_item .value {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.info_item .value.distance {
+  color: #07c160;
+}
+
+.info_item .value.time {
+  color: #ff6b35;
+}
+
+/* 按钮区域 */
+.button_box {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.btn-confirm,
+.btn-start {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 36rpx;
+  border-radius: 44rpx;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+  color: #ffffff;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, #07c160 0%, #05a850 100%);
+  color: #ffffff;
+}
+
+.btn-confirm::after,
+.btn-start::after {
+  border: none;
+}
+
+/* 适配不同屏幕高度 */
+@media screen and (max-height: 600px) {
+  .map-container {
+    margin-top: 228rpx;
+    height: calc(100vh - 788rpx);
+  }
+  
+  .bus-container {
+    padding: 248rpx 20rpx 20rpx 20rpx;
+  }
+  
+  .map_text {
+    min-height: 160rpx;
+    max-height: 280rpx;
+    padding: 20rpx 20rpx;
+  }
+  
+  .h1 {
+    font-size: 34rpx;
+  }
+  
+  .btn-confirm,
+  .btn-start {
+    height: 76rpx;
+    line-height: 76rpx;
+    font-size: 32rpx;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .map-container {
+    margin-top: 288rpx;
+    height: calc(100vh - 928rpx);
+  }
+  
+  .bus-container {
+    padding: 348rpx 20rpx 20rpx 20rpx;
+  }
+  
+  .map_text {
+    min-height: 200rpx;
+    max-height: 360rpx;
+    padding: 40rpx 40rpx;
+  }
+  
+  .h1 {
+    font-size: 42rpx;
+  }
+  
+  .btn-confirm,
+  .btn-start {
+    height: 96rpx;
+    line-height: 96rpx;
+    font-size: 38rpx;
+  }
+}
+
+/* 平滑过渡效果 */
+.map-container, .map_text {
+  transition: all 0.3s ease;
+}

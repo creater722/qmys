@@ -1,0 +1,236 @@
+/* 页面整体样式 */
+.order-list-page {
+  height: 100vh;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 导航栏 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 16px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.nav-left {
+  width: 60px;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.nav-right {
+  width: 60px;
+}
+
+/* 订单列表容器 */
+.order-list-container {
+  height: 100vh;
+  padding: 10px;
+  padding-top: 54px;
+  box-sizing: border-box;
+}
+
+/* 订单列表 */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 单个订单项 */
+.order-item {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* 订单头部 */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-no {
+  color: #666;
+}
+
+.order-status {
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* 状态样式 */
+.status-pending {
+  color: #ff9500;
+  background-color: #fff8e8;
+}
+
+.status-paid {
+  color: #0088ff;
+  background-color: #e8f4ff;
+}
+
+.status-canceled {
+  color: #999;
+  background-color: #f5f5f5;
+}
+
+.status-completed {
+  color: #00c800;
+  background-color: #e8ffe8;
+}
+
+/* 酒店信息 */
+.hotel-info {
+  display: flex;
+  padding: 16px;
+  gap: 12px;
+}
+
+.hotel-cover {
+  width: 100px;
+  height: 75px;
+  border-radius: 4px;
+}
+
+.hotel-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hotel-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.room-type {
+  color: #666;
+}
+
+.date-range {
+  color: #666;
+  display: flex;
+  gap: 8px;
+}
+
+.create-time {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+/* 订单底部 */
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.total-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: #e64340;
+}
+
+.order-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 按钮样式 */
+.btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pay-btn {
+  background-color: #e64340;
+  color: #fff;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.detail-btn {
+  background-color: #fff;
+  color: #0088ff;
+  border: 1px solid #0088ff;
+}
+
+.detail-btn.disabled {
+  color: #999;
+  border-color: #ddd;
+}
+
+/* 空数据样式 */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-img {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.empty-btn {
+  padding: 8px 24px;
+  background-color: #0088ff;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+}
+
+/* 加载中样式 */
+.loading-container {
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* 没有更多 */
+.no-more {
+  padding: 15px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+}

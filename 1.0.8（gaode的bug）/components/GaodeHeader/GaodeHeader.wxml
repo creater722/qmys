@@ -1,0 +1,7 @@
+<!--components/GaodeHeader/GaodeHeader.wxml-->
+<view class="flex-style">
+  <view class="flex-item {{gaodeType === 'bus' ? 'active' : ''}}" bind:touchstart="goToSubway">公/地</view>
+  <view class="flex-item {{gaodeType === 'taxi' ? 'active' : ''}}" bind:touchstart="goToTaxi">打车</view>
+  <view class="flex-item {{gaodeType === 'riding' ? 'active' : ''}}" bind:touchstart="goToRide">骑行</view>
+  <view class="flex-item {{gaodeType === 'car' ? 'active' : ''}}" bind:touchstart="goToCar">驾车</view>
+</view>

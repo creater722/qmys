@@ -1,0 +1,89 @@
+<!--pages/住/hotel_user/addHotel/addHotel.wxml-->
+<view class="add-hotel">
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+    <text class="back-text">返回</text>
+  </view>
+
+  <!-- 页面标题 -->
+  <view class="page-title">添加酒店信息</view>
+
+  <!-- 酒店基础信息 -->
+  <view class="form-group">
+    <text class="form-label">酒店名称</text>
+    <input 
+      class="form-input" 
+      placeholder="请输入酒店名称（如：测试酒店1）" 
+      bindinput="onHotelNameInput"
+      value="{{hotelName}}"
+    />
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">酒店地址</text>
+    <input 
+      class="form-input" 
+      placeholder="请输入详细地址（如：北京市朝阳区测试路1号）" 
+      bindinput="onAddressInput"
+      value="{{address}}"
+    />
+  </view>
+
+  <view class="form-group">
+    <text class="form-label">封面图URL</text>
+    <input 
+      class="form-input" 
+      placeholder="输入图片URL（示例：https://picsum.photos/400/300）" 
+      bindinput="onCoverInput"
+      value="{{coverImage}}"
+    />
+    <!-- 新增：示例提示 -->
+    <text class="tips-text">提示：直接使用示例URL可生成随机图片</text>
+  </view>
+
+  <!-- 房型列表 -->
+  <view class="room-list">
+    <text class="list-title">房型信息（至少添加1个）</text>
+    
+    <!-- 已添加的房型 -->
+    <view class="room-item" wx:for="{{roomList}}" wx:key="index">
+      <view class="room-input-wrap">
+        <view class="room-input">
+          <text class="input-label">房型{{index+1}}：</text>
+          <input 
+            placeholder="如：大床房/双床房" 
+            bindinput="onRoomTypeInput"
+            data-index="{{index}}"
+            value="{{item.roomType}}"
+            class="room-input-text"
+          />
+        </view>
+        <view class="room-input">
+          <text class="input-label">价格（元）：</text>
+          <input 
+            type="digit" 
+            placeholder="如：299" 
+            bindinput="onRoomPriceInput"
+            data-index="{{index}}"
+            value="{{item.price}}"
+            class="room-input-text"
+          />
+        </view>
+      </view>
+      <view class="delete-btn" bindtap="deleteRoom" data-index="{{index}}">
+        <text>删除</text>
+      </view>
+    </view>
+
+    <!-- 添加房型按钮 -->
+    <view class="add-room-btn" bindtap="addRoom">
+      <text>+ 添加房型</text>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <button class="submit-btn" bindtap="submitHotel" disabled="{{!canSubmit}}">
+    提交酒店信息
+  </button>
+</view>

@@ -1,0 +1,54 @@
+<!--pages/住/hotel_user/personalCenter/personalCenter.wxml-->
+<view class="personal-center">
+  <!-- 新增：顶部返回栏 -->
+  <view class="header-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="iconfont icon-arrow-left"></text>
+      <text class="back-text">返回</text>
+    </view>
+  </view>
+
+  <!-- 用户信息卡片 -->
+  <view class="user-card {{isLogin ? 'login' : 'unlogin'}}" bindtap="goToLogin">
+    <view class="avatar">
+      <image src="{{userInfo.avatar}}" mode="aspectFill"></image>
+    </view>
+    <view class="info">
+      <text class="nickname">{{userInfo.nickname}}</text>
+      <text class="phone">{{userInfo.phone}}</text>
+    </view>
+    <view class="arrow">
+      <text class="iconfont icon-arrow-right"></text>
+    </view>
+  </view>
+<!-- 在用户卡片和菜单列表之间插入 -->
+  <!-- <view class="shop-entrance" bindtap="goToShop">
+    <text class="iconfont icon-shop"></text>
+    <text>我是店家，管理酒店</text>
+    <text class="arrow">></text>
+  </view> -->
+  <!-- 菜单列表 -->
+  <view class="menu-list">
+    <view 
+      wx:for="{{menuList}}" 
+      wx:key="title" 
+      class="menu-item"
+      bindtap="onMenuTap"
+      data-path="{{item.path}}"
+    >
+      <view class="menu-left">
+        <text class="iconfont {{item.icon}}"></text>
+        <text class="menu-title">{{item.title}}</text>
+      </view>
+      <view class="menu-right">
+        <text wx:if="{{item.badge}}" class="badge">{{item.badge}}</text>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view wx:if="{{isLogin}}" class="logout-btn" bindtap="logout">
+    <text>退出登录</text>
+  </view>
+</view>

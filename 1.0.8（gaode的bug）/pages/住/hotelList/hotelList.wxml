@@ -1,0 +1,161 @@
+<!-- 酒店列表页面 -->
+<!-- 返回按钮 -->
+<view class="back-btn" bindtap="goBack">
+  <text class="back-icon">←</text>
+  <text class="back-text">返回</text>
+</view>
+
+<view class="page-container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <icon type="search" size="16" color="#999" />
+      <input 
+        placeholder="搜索酒店名称/地址" 
+        value="{{searchKey}}"
+        bindinput="onSearchInput"
+        confirm-type="search"
+        bindconfirm="onSearch"
+      />
+    </view>
+    <button class="search-btn" bindtap="onSearch">搜索</button>
+  </view>
+
+  <!-- 筛选栏 -->
+  <scroll-view class="filter-scroll" scroll-x>
+    <view class="filter-bar">
+      <!-- 一级城市筛选（新增二级联动） -->
+      <view class="filter-item city-filter {{currentCity ? 'active' : ''}}" bindtap="openCitySelector">
+        {{currentCity || '全部城市'}}
+        <text class="arrow-icon">▼</text>
+      </view>
+
+      <!-- 二级区县筛选（选中城市后显示） -->
+      <view class="filter-item district-filter {{currentDistrict ? 'active' : ''}}" wx:if="{{currentCity}}">
+        <picker mode="selector" range="{{districtList}}" bindchange="onDistrictChange">
+          <view>
+            {{currentDistrict || '全部区县'}}
+          </view>
+        </picker>
+      </view>
+
+      <!-- 星级筛选 -->
+      <picker mode="selector" range="{{starList}}" bindchange="onStarChange">
+        <view class="filter-item {{currentStar ? 'active' : ''}}">
+          {{currentStar || '全部星级'}}
+        </view>
+      </picker>
+
+      <!-- 价格筛选 -->
+      <picker mode="selector" range="{{priceRangeList}}" bindchange="onPriceChange">
+        <view class="filter-item {{currentPrice ? 'active' : ''}}">
+          {{currentPrice || '价格不限'}}
+        </view>
+      </picker>
+
+      <!-- 排序筛选 -->
+      <picker mode="selector" range="{{sortList}}" bindchange="onSortChange">
+        <view class="filter-item {{currentSort ? 'active' : ''}}">
+          {{currentSort || '默认排序'}}
+        </view>
+      </picker>
+    </view>
+  </scroll-view>
+
+  <!-- 城市选择弹窗（新增） -->
+  <view class="city-modal" wx:if="{{showCitySelector}}">
+    <view class="modal-mask" bindtap="closeCitySelector"></view>
+    <view class="modal-content">
+      <view class="modal-title">选择城市</view>
+      <scroll-view class="city-list-scroll" scroll-y>
+        <view class="city-item" wx:for="{{cityDataList}}" wx:key="cityCode" bindtap="selectCity" data-city="{{item}}">
+          {{item.cityName}}
+        </view>
+      </scroll-view>
+      <button class="modal-close" bindtap="closeCitySelector">取消</button>
+    </view>
+  </view>
+
+  <!-- 酒店列表 -->
+  <view class="hotel-list">
+    <view 
+      class="hotel-item" 
+      wx:for="{{hotelList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <!-- 封面图 -->
+      <view class="cover-wrap">
+        <image 
+          class="cover-img" 
+          src="{{item.coverImage || '/images/default-hotel.png'}}" 
+          mode="aspectFill"
+        />
+        <view class="price-tag">¥{{item.minPrice}}起</view>
+      </view>
+
+      <!-- 酒店信息 -->
+      <view class="info-wrap">
+        <view class="name">{{item.name}}</view>
+        <view class="tag-wrap">
+          <text class="tag" wx:if="{{item.brand}}">{{item.brand}}</text>
+          <text class="tag star-tag">{{item.starRating}}星级</text>
+          <text class="tag score-tag">{{item.rating}}分</text>
+        </view>
+        <view class="address">{{item.city}}{{item.district}}{{item.address}}</view>
+        <view class="facilities">
+          <text wx:for="{{item.facilities.slice(0,3)}}" wx:key="index">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态/加载中 -->
+  <view class="empty" wx:if="{{hotelList.length === 0 && !isLoading}}">
+    <image src="/images/empty-hotel.png" class="empty-img" />
+    <text>暂无符合条件的酒店</text>
+  </view>
+  <view class="loading" wx:if="{{isLoading}}">加载中...</view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{!isLoading && hasMore}}">
+    <button bindtap="loadMore">加载更多</button>
+  </view>
+</view>
+
+<!-- 自定义伪TabBar（固定在底部） -->
+<view class="custom-tabbar">
+  <view 
+    class="tab-item {{activeTab === 'hotel' ? 'active' : ''}}"
+    bindtap="switchTab"
+    data-tab="hotel"
+  >
+    <text class="tab-icon">🏨</text>
+    <text class="tab-text">酒店</text>
+  </view>
+  <view 
+    class="tab-item {{activeTab === 'order' ? 'active' : ''}}"
+    bindtap="switchTab"
+    data-tab="order"
+  >
+    <text class="tab-icon">📝</text>
+    <text class="tab-text">我的订单</text>
+  </view>
+  <view 
+    class="tab-item {{activeTab === 'collect' ? 'active' : ''}}"
+    bindtap="switchTab"
+    data-tab="collect"
+  >
+    <text class="tab-icon">❤️</text>
+    <text class="tab-text">我的收藏</text>
+  </view>
+  <view 
+    class="tab-item {{activeTab === 'mine' ? 'active' : ''}}"
+    bindtap="switchTab"
+    data-tab="mine"
+  >
+    <text class="tab-icon">👤</text>
+    <text class="tab-text">个人中心</text>
+  </view>
+</view>

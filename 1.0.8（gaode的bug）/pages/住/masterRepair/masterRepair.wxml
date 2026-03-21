@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-title">全部维修工单</view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{status}}" options="{{statusOptions}}" bind:change="onStatusChange" />
+    </van-dropdown-menu>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="loading">
+    <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
+  </view>
+
+  <!-- 空数据提示 -->
+  <view wx:elif="{{allOrders.length === 0 && !isLoading}}" class="empty">
+    <image src="/images/empty-order.png" class="empty-img" />
+    <text class="empty-text">暂无维修工单</text>
+  </view>
+
+  <!-- 工单列表 -->
+  <view wx:else class="order-list">
+    <view class="order-item" wx:for="{{allOrders}}" wx:key="orderId">
+      <view class="order-header">
+        <text class="order-no">工单编号：{{item.orderNo}}</text>
+        <text class="user-id">用户ID：{{item.userId}}</text>
+      </view>
+      <view class="order-body">
+        <view class="order-row">
+          <text class="label">故障类型：</text>
+          <text class="value">{{item.repairType}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">故障描述：</text>
+          <text class="value">{{item.description}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">维修地址：</text>
+          <text class="value">{{item.address}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">联系电话：</text>
+          <text class="value">{{item.contactPhone}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">提交时间：</text>
+          <text class="value">{{formatTime(item.createTime)}}</text>
+        </view>
+        <view class="order-row">
+          <text class="label">工单状态：</text>
+          <text class="value {{item.status === 'submitted' ? 'status-pending' : 'status-done'}}">
+            {{getStatusText(item.status)}}
+          </text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <button class="btn-process" bindtap="processOrder" data-orderid="{{item.orderId}}" wx:if="{{item.status === 'submitted'}}">开始处理</button>
+        <button class="btn-complete" bindtap="completeOrder" data-orderid="{{item.orderId}}" wx:if="{{item.status === 'processing'}}">完成工单</button>
+      </view>
+    </view>
+  </view>
+  <view class="back-btn" bindtap="goBack">
+    <van-icon name="arrow-left" />
+    <text>返回上一页</text>
+  </view>
+</view>

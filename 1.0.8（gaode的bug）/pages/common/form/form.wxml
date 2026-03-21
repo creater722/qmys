@@ -1,0 +1,42 @@
+<navigation-bar title="{{title}}" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="form-group">
+      <view class="form-title">{{formTitle}}</view>
+      <view class="form-desc" wx:if="{{formDesc}}">{{formDesc}}</view>
+      
+      <block wx:for="{{fields}}" wx:key="name">
+        <view class="form-item">
+          <label class="label">{{item.label}}</label>
+          <input 
+            class="input" 
+            placeholder="{{item.placeholder}}" 
+            data-name="{{item.name}}" 
+            bindinput="onInput"
+            wx:if="{{item.type === 'text' || item.type === 'tel'}}"
+            type="{{item.type === 'tel' ? 'number' : 'text'}}"
+          />
+          <picker 
+            wx:if="{{item.type === 'date'}}" 
+            mode="date" 
+            bindchange="onDateChange" 
+            data-name="{{item.name}}"
+          >
+             <view class="picker {{formData[item.name] ? '' : 'placeholder'}}">
+               {{formData[item.name] || item.placeholder}}
+             </view>
+          </picker>
+          <textarea 
+            wx:if="{{item.type === 'textarea'}}"
+            class="textarea"
+            placeholder="{{item.placeholder}}"
+            data-name="{{item.name}}"
+            bindinput="onInput"
+          ></textarea>
+        </view>
+      </block>
+    </view>
+    
+    <button class="submit-btn" bindtap="onSubmit">提交</button>
+  </view>
+</scroll-view>

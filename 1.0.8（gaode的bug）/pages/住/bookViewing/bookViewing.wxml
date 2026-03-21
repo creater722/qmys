@@ -1,0 +1,66 @@
+<view class="page-container">
+  <view class="page-title">预约看房</view>
+
+  <!-- 房源信息 -->
+  <view class="house-info" wx:if="{{houseTitle}}">
+    <text class="house-title">房源：{{houseTitle}}</text>
+  </view>
+
+  <!-- 预约表单 -->
+  <view class="form-content">
+    <view class="form-item">
+      <label class="form-label">姓名 <text class="required">*</text></label>
+      <input 
+        class="form-input"
+        placeholder="请输入您的姓名"
+        value="{{bookForm.name}}"
+        bindinput="onInputChange"
+        data-key="name"
+      />
+    </view>
+    <view class="form-item">
+      <label class="form-label">联系电话 <text class="required">*</text></label>
+      <input 
+        class="form-input"
+        placeholder="请输入您的手机号"
+        value="{{bookForm.phone}}"
+        bindinput="onInputChange"
+        data-key="phone"
+        type="number"
+        maxlength="11"
+      />
+    </view>
+    <view class="form-item">
+      <label class="form-label">预约时间 <text class="required">*</text></label>
+      <picker mode="date" bindchange="onDateChange" value="{{bookForm.date}}">
+        <view class="picker-wrap">
+          {{bookForm.date || '请选择预约日期'}}
+          <icon type="arrowright" size="16" color="#999" />
+        </view>
+      </picker>
+    </view>
+    <view class="form-item">
+      <label class="form-label">备注</label>
+      <textarea 
+        class="form-textarea"
+        placeholder="请输入备注信息（选填）"
+        value="{{bookForm.remark}}"
+        bindinput="onInputChange"
+        data-key="remark"
+      ></textarea>
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <button 
+    class="submit-btn"
+    bindtap="submitBook"
+    disabled="{{isSubmitting}}"
+    loading="{{isSubmitting}}"
+  >
+    {{isSubmitting ? '提交中...' : '提交预约'}}
+  </button>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">← 返回</view>
+</view>

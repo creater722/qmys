@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation-bar": "../../../components/navigation-bar/navigation-bar",
+    "GaodeHeader":"../../../components/GaodeHeader/GaodeHeader",
+    "GaodeInputTips":"../../../components/GaodeInputTips/GaodeInputTips"
+  }
+}

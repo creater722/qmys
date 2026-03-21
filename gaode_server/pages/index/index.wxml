@@ -1,0 +1,95 @@
+<!--index.wxml-->
+<navigation-bar title="便民服务" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-index">
+  <view class="hero-title">一站式生活服务</view>
+  <view class="hero-subtitle">医食住行用全覆盖</view>
+</view>
+<view class="search">
+  <text class="search-icon">🔍</text>
+  <input class="search-input" placeholder="搜索服务或地点" confirm-type="search" bindconfirm="onSearchConfirm" />
+</view>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <scroll-view class="chips" scroll-x>
+      <view class="chip" data-tab="/pages/医/医" bindtap="goTab">医</view>
+      <view class="chip" data-tab="/pages/食/食" bindtap="goTab">食</view>
+      <view class="chip" data-tab="/pages/住/住" bindtap="goTab">住</view>
+      <view class="chip" data-tab="/pages/行/行" bindtap="goTab">行</view>
+      <view class="chip" data-tab="/pages/用/用" bindtap="goTab">用</view>
+    </scroll-view>
+
+    <view class="section">
+      <view class="section-title">精选服务</view>
+      <view class="grid">
+        <view class="feature card" data-tab="/pages/医/医" bindtap="goTab">
+          <view class="feature-icon">🏥</view>
+          <view class="feature-title">预约挂号</view>
+          <view class="feature-desc">就医更省心</view>
+        </view>
+        <view class="feature card" data-tab="/pages/食/食" bindtap="goTab">
+          <view class="feature-icon">🛵</view>
+          <view class="feature-title">外卖立减</view>
+          <view class="feature-desc">下单享优惠</view>
+        </view>
+        <view class="feature card" data-tab="/pages/行/行" bindtap="goTab">
+          <view class="feature-icon">🚉</view>
+          <view class="feature-title">地铁到站</view>
+          <view class="feature-desc">实时查询</view>
+        </view>
+        <view class="feature card" data-tab="/pages/住/住" bindtap="goTab">
+          <view class="feature-icon">🏠</view>
+          <view class="feature-title">真实房源</view>
+          <view class="feature-desc">安心租住</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">快速入口</view>
+      <view class="quick-grid">
+        <view class="quick" data-tab="/pages/医/医" bindtap="goTab">
+          <text class="quick-icon">🚑</text>
+          <text class="quick-text">急诊</text>
+        </view>
+        <view class="quick" data-tab="/pages/食/食" bindtap="goTab">
+          <text class="quick-icon">🍽️</text>
+          <text class="quick-text">餐厅</text>
+        </view>
+        <view class="quick" data-tab="/pages/住/住" bindtap="goTab">
+          <text class="quick-icon">🛠️</text>
+          <text class="quick-text">报修</text>
+        </view>
+        <view class="quick" data-tab="/pages/行/行" bindtap="goTab">
+          <text class="quick-icon">🚖</text>
+          <text class="quick-text">打车</text>
+        </view>
+        <view class="quick" data-tab="/pages/用/用" bindtap="goTab">
+          <text class="quick-icon">🛒</text>
+          <text class="quick-text">超市</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">个人中心</view>
+      <view class="quick-grid">
+        <view class="quick" data-url="/pages/我的/我的" bindtap="goPage">
+          <text class="quick-icon">👤</text>
+          <text class="quick-text">我的</text>
+        </view>
+        <view class="quick" data-url="/pages/收藏/收藏" bindtap="goPage">
+          <text class="quick-icon">⭐</text>
+          <text class="quick-text">收藏</text>
+        </view>
+        <view class="quick" data-url="/pages/喜欢/喜欢" bindtap="goPage">
+          <text class="quick-icon">❤️</text>
+          <text class="quick-text">喜欢</text>
+        </view>
+        <view class="quick" data-url="/pages/setting/setting" bindtap="goPage">
+          <text class="quick-icon">⚙️</text>
+          <text class="quick-text">设置</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

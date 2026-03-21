@@ -1,0 +1,152 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.filter-bar {
+  background-color: #fff;
+  padding: 10rpx;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+.empty-img {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.order-list {
+  gap: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-item {
+  background-color: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.order-no {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.user-id {
+  font-size: 26rpx;
+  color: #1989fa;
+}
+
+.order-body {
+  margin-bottom: 20rpx;
+}
+
+.order-row {
+  display: flex;
+  margin-bottom: 15rpx;
+  font-size: 28rpx;
+}
+
+.label {
+  color: #999;
+  width: 160rpx;
+}
+
+.value {
+  color: #333;
+  flex: 1;
+}
+
+.status-pending {
+  color: #ff4d4f;
+}
+
+.status-done {
+  color: #52c41a;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+}
+
+.btn-process {
+  background-color: #1989fa;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  padding: 10rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.btn-complete {
+  background-color: #52c41a;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  padding: 10rpx 20rpx;
+  font-size: 26rpx;
+}
+/* 原有样式不变，新增： */
+.back-btn {
+  position: fixed;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1989fa;
+  color: #fff;
+  width: 600rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  z-index: 999;
+}
+
+.page-wrap {
+  padding-bottom: 100rpx;
+  min-height: 100vh;
+}

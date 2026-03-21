@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "附近超市",
+  "usingComponents": {
+    "navigation-bar": "../../../components/navigation-bar/navigation-bar"
+  }
+}

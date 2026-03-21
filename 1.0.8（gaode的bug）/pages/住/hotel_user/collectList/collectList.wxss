@@ -1,0 +1,167 @@
+/* pages/住/hotel_user/collectList/collectList.wxss */
+page {
+  background-color: #f5f5f5;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 返回按钮 */
+.back-btn {
+  position: fixed;
+  top: 20rpx;
+  left: 20rpx;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15rpx 20rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: #007aff;
+  margin-right: 8rpx;
+}
+
+.back-text {
+  font-size: 28rpx;
+  color: #007aff;
+}
+
+/* 页面容器 */
+.page-container {
+  padding: 100rpx 20rpx 20rpx;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30rpx;
+  color: #1a1a1a;
+}
+
+/* 加载中 */
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 空列表 */
+.empty-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  color: #ddd;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.empty-btn {
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  border-radius: 40rpx;
+  padding: 15rpx 40rpx;
+  font-size: 28rpx;
+}
+
+/* 收藏列表 */
+.collect-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.collect-item {
+  display: flex;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* 酒店封面 */
+.hotel-img {
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+/* 酒店信息 */
+.hotel-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10rpx;
+}
+
+.hotel-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.hotel-address {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.collect-time {
+  font-size: 22rpx;
+  color: #ccc;
+}
+
+/* 取消收藏按钮 */
+.cancel-btn {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  background-color: #fff;
+  color: #ff5722;
+  border: 1rpx solid #ff5722;
+  border-radius: 20rpx;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+}
+
+/* 按钮点击态 */
+.cancel-btn:active, .empty-btn:active {
+  opacity: 0.8;
+}

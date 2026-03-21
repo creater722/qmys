@@ -1,0 +1,48 @@
+<navigation-bar title="超市详情" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="content">
+    <view class="supermarket-header">
+      <view class="supermarket-basic-info">
+        <view class="supermarket-name">{{supermarket.name}}</view>
+        <view class="supermarket-address">{{supermarket.address}}</view>
+        <view class="supermarket-hours">{{supermarket.hours}}</view>
+        <view class="supermarket-distance">{{supermarket.distance}} 米</view>
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">超市信息</view>
+      <view class="info-item">
+        <view class="info-label">营业时间</view>
+        <view class="info-value">{{supermarket.hours}}</view>
+      </view>
+      <view class="info-item">
+        <view class="info-label">地址</view>
+        <view class="info-value">{{supermarket.address}}</view>
+      </view>
+      <view class="info-item">
+        <view class="info-label">距离</view>
+        <view class="info-value">{{supermarket.distance}} 米</view>
+      </view>
+    </view>
+    <view class="section">
+      <view class="section-title">超市特色</view>
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{supermarket.features}}" wx:key="index">
+          <text class="feature-icon">✓</text>
+          <text class="feature-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-bar">
+      <button class="action-btn map-btn" bindtap="openMap">
+        <text class="btn-icon">🗺️</text>
+        <text>查看地图</text>
+      </button>
+      <button class="action-btn collect-btn" bindtap="toggleCollect">
+        <text class="btn-icon">{{isCollected ? '❤️' : '🤍'}}</text>
+        <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+      </button>
+    </view>
+  </view>
+</scroll-view>

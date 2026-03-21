@@ -1,0 +1,45 @@
+<view class="page-container">
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+    <text class="back-text">返回</text>
+  </view>
+
+  <!-- 标题 -->
+  <view class="page-title">我的酒店收藏</view>
+
+  <!-- 加载中 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 空列表 -->
+  <view class="empty-wrap" wx:if="{{!loading && isEmpty}}">
+    <text class="empty-icon">⭐</text>
+    <text class="empty-text">暂无收藏的酒店</text>
+    <button class="empty-btn" bindtap="goBack">去逛逛</button>
+  </view>
+
+  <!-- 收藏列表 -->
+  <view class="collect-list" wx:if="{{!loading && !isEmpty}}">
+    <view class="collect-item" wx:for="{{collectList}}" wx:key="id" bindtap="goToHotelDetail" data-hotelid="{{item.hotelId}}">
+      <!-- 酒店封面 -->
+      <image class="hotel-img" src="{{item.hotel.coverImage || '/images/default-hotel.png'}}" mode="widthFix" />
+      
+      <!-- 酒店信息 -->
+      <view class="hotel-info">
+        <view class="hotel-name">{{item.hotel.name || '未知酒店'}}</view>
+        <view class="hotel-desc">
+          <text>{{item.hotel.starRating || '无'}}星级 | {{item.hotel.rating || 0}}分</text>
+        </view>
+        <view class="hotel-address">{{item.hotel.address || '未知地址'}}</view>
+        <view class="collect-time">收藏时间：{{item.collectTime ? item.collectTime.slice(0,10) : ''}}</view>
+      </view>
+      
+      <!-- 取消收藏按钮 -->
+      <view class="cancel-btn" bindtap="cancelCollect" data-hotelid="{{item.hotelId}}" data-index="{{index}}" catchtap>
+        <text>取消收藏</text>
+      </view>
+    </view>
+  </view>
+</view>

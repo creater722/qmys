@@ -1,0 +1,51 @@
+<navigation-bar title="附近超市" color="black" background="#FFF"></navigation-bar>
+<view class="hero hero-supermarket">
+  <view class="hero-title">附近超市</view>
+  <view class="hero-subtitle">方便快捷的购物体验</view>
+</view>
+
+<!-- 收藏夹按钮 -->
+<view class="collection-button-container">
+  <button class="collection-button" bindtap="goToCollection">
+    <text class="collection-icon">❤️</text>
+    <text class="collection-text">收藏夹</text>
+  </button>
+</view>
+
+<!-- 加载状态 -->
+<view wx:if="{{isLoading}}" class="loading-container">
+  <view class="loading-spinner"></view>
+  <view class="loading-text">正在获取附近超市...</view>
+</view>
+
+<!-- 超市列表 -->
+<scroll-view wx:else class="scrollarea" scroll-y type="list">
+  <view class="content">
+    
+    <view class="section">
+      <view class="section-title">超市列表</view>
+      <view class="supermarket-list">
+        <!-- 超市列表 -->
+        <block wx:if="{{supermarketList.length === 0}}">
+          <view class="empty-state">
+            <text class="empty-icon">🛒</text>
+            <text class="empty-text">未找到附近超市</text>
+            <button class="refresh-button" bindtap="getNearbySupermarkets">重新获取</button>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="supermarket-item" wx:for="{{supermarketList}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+            <image class="supermarket-image" src="{{item.image}}" mode="aspectFill" binderror="imageError" data-index="{{index}}"></image>
+            <view class="supermarket-info">
+              <view class="supermarket-name">{{item.name}}</view>
+              <view class="supermarket-address">{{item.address}}</view>
+              <view class="supermarket-meta">
+                <text class="supermarket-distance">{{item.distance}} 米</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>

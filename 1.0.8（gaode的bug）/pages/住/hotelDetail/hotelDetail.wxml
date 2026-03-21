@@ -1,0 +1,103 @@
+<!-- 返回按钮 -->
+<view class="back-btn" bindtap="goBack">
+  <text class="back-icon">←</text>
+  <text class="back-text">返回</text>
+</view>
+
+<view class="page-container">
+  <!-- 酒店封面图 -->
+  <image class="cover-img" src="{{hotel.coverImage || '/images/default-hotel.png'}}" mode="widthFix" />
+
+  <!-- 酒店基础信息 -->
+  <view class="base-info">
+    <view class="name">{{hotel.name || '未知酒店'}}</view>
+    <view class="tag-wrap">
+      <text class="tag">{{hotel.type || '经济型酒店'}}</text>
+      <text class="tag star-tag">{{hotel.starRating || '未评级'}}星级</text>
+      <text class="tag score-tag">{{hotel.rating || 4.5}}分</text>
+    </view>
+    <view class="address">
+      <icon type="location" size="14" color="#999" />
+      {{hotel.province}}{{hotel.city}}{{hotel.district}}{{hotel.address || '暂无地址'}}
+    </view>
+    <view class="phone" bindtap="callHotel">
+      <icon type="phone" size="14" color="#007aff" />
+      {{hotel.phone || '暂无'}}
+    </view>
+  </view>
+
+  <!-- 设施服务 -->
+  <view class="facility-wrap">
+    <view class="title">酒店设施</view>
+    <view class="tag-list" wx:if="{{hotel.facilities && hotel.facilities.length > 0}}">
+      <text class="tag" wx:for="{{hotel.facilities}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="empty-tip" wx:else>暂无设施信息</view>
+  </view>
+
+  <view class="service-wrap">
+    <view class="title">酒店服务</view>
+    <view class="tag-list" wx:if="{{hotel.services && hotel.services.length > 0}}">
+      <text class="tag" wx:for="{{hotel.services}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="empty-tip" wx:else>暂无服务信息</view>
+  </view>
+
+  <!-- 房型列表 -->
+  <view class="room-list">
+    <view class="title">可用房型</view>
+    <!-- 房型列表非空时显示 -->
+    <view wx:if="{{hotel.rooms && hotel.rooms.length > 0}}">
+      <view class="room-item" wx:for="{{hotel.rooms}}" wx:key="index">
+        <!-- 确保 item.id 有值，无值时禁用按钮 -->
+        <view class="room-info">
+          <view class="room-type">{{item.roomType || '未知房型'}}</view>
+          <view class="desc">
+            {{item.bedCount || 1}}张床 | {{item.area || '未知'}}㎡ | 
+            <text wx:for="{{item.facilities.slice(0,2)}}" wx:key="index">{{item}}{{index < 1 ? ' | ' : ''}}</text>
+          </view>
+        </view>
+        <view class="room-actions">
+          <view class="price">¥{{item.price || 0}}/晚</view>
+          <!-- ✅ 核心优化：1. 增加 type="button" 2. 空值禁用 3. 增加 hover-class -->
+          <button 
+            class="book-btn" 
+            type="button"
+            hover-class="book-btn-hover"
+            bindtap="bookRoom" 
+            data-room-id="{{item.id || ''}}" 
+            data-hotel-id="{{hotel.id || ''}}"
+            disabled="{{!item.id || !hotel.id}}"
+          >
+            {{!item.id || !hotel.id ? '暂不可订' : '立即预订'}}
+          </button>
+        </view>
+      </view>
+    </view>
+    <!-- 房型列表为空时显示提示 -->
+    <view class="empty-tip" wx:else>暂无可用房型</view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button 
+      class="collect-btn" 
+      type="button"
+      hover-class="collect-btn-hover"
+      bindtap="collectHotel" 
+      data-id="{{hotel.id || ''}}"
+      disabled="{{!hotel.id}}"
+    >
+      {{isCollected ? '已收藏' : '收藏酒店'}}
+    </button>
+    <button 
+      class="book-all-btn" 
+      type="button"
+      hover-class="book-all-btn-hover"
+      bindtap="showRoomList"
+      disabled="{{!hotel.rooms || hotel.rooms.length === 0}}"
+    >
+      预订房间
+    </button>
+  </view>
+</view>

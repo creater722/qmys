@@ -1,0 +1,32 @@
+<view class="page-container">
+  <view class="page-title">我的收藏房源</view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{isLoading}}">加载收藏列表中...</view>
+
+  <!-- 空数据 -->
+  <view class="empty" wx:if="{{!isLoading && collectList.length === 0}}">
+    <text class="empty-icon">⭐</text>
+    <text class="empty-text">暂无收藏的房源</text>
+    <button class="empty-btn" bindtap="goRentList">去浏览房源</button>
+  </view>
+
+  <!-- 收藏列表 -->
+  <scroll-view class="list" scroll-y wx:if="{{!isLoading && collectList.length > 0}}">
+    <view class="house-item" wx:for="{{collectList}}" wx:key="id" bindtap="goDetail" data-houseid="{{item.id}}">
+      <view class="item-title">{{item.title}}</view>
+      <view class="item-price">¥{{item.price}}/月</view>
+      <view class="item-info">
+        <text>{{item.roomCount}}室{{item.hallCount}}厅</text>
+        <text>{{item.area}}㎡</text>
+        <text>{{item.city}}{{item.district}}</text>
+      </view>
+      <view class="item-op">
+        <button class="uncollect-btn" bindtap="uncollectHouse" data-houseid="{{item.id}}" catchtap>取消收藏</button>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">← 返回</view>
+</view>
